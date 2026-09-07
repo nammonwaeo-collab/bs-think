@@ -20,53 +20,21 @@
                     fontFamily: {
                         sans: ['Kanit', 'Inter', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f3ff',
-                            100: '#e0e7ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            900: '#1e1b4b',
-                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        .card-flip {
-            perspective: 1000px;
-        }
-        .card-inner {
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-        .card-inner.is-flipped {
-            transform: rotateY(180deg);
-        }
-        .card-front, .card-back {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-        .card-back {
-            transform: rotateY(180deg);
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        .card-flip { perspective: 1000px; }
+        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+        .card-inner.is-flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+        .card-back { transform: rotateY(180deg); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="h-full text-slate-800 antialiased flex flex-col font-sans">
@@ -75,10 +43,9 @@
     <header class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo & Course Title -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('summary')">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-md font-bold text-lg">
-                        <i class="fa-solid me-0.5 fa-brain"></i>
+                        <i class="fa-solid fa-brain"></i>
                     </div>
                     <div>
                         <h1 class="font-bold text-lg leading-tight">INT110 Business Thinking</h1>
@@ -86,7 +53,6 @@
                     </div>
                 </div>
 
-                <!-- Navigation Tabs (Desktop) -->
                 <nav class="hidden md:flex space-x-1">
                     <button onclick="switchTab('summary')" id="nav-summary" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 bg-white/10 text-white">
                         <i class="fa-solid fa-book-open"></i>
@@ -106,7 +72,6 @@
                     </button>
                 </nav>
 
-                <!-- Search Quick Bar -->
                 <div class="relative hidden sm:block w-48 lg:w-64">
                     <input type="text" id="quick-search" placeholder="ค้นหาคำศัพท์ / สูตร..." oninput="handleQuickSearch(this.value)"
                         class="w-full pl-9 pr-4 py-1.5 bg-indigo-950/60 border border-indigo-700/50 rounded-lg text-xs text-white placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-400">
@@ -115,7 +80,6 @@
             </div>
         </div>
 
-        <!-- Mobile Nav Bar -->
         <div class="md:hidden flex justify-around border-t border-indigo-800 bg-indigo-950 py-2 text-xs">
             <button onclick="switchTab('summary')" class="mobile-nav-btn text-center text-white flex flex-col items-center">
                 <i class="fa-solid fa-book-open text-base mb-1"></i>
@@ -127,7 +91,7 @@
             </button>
             <button onclick="switchTab('quiz')" class="mobile-nav-btn text-center text-indigo-300 flex flex-col items-center">
                 <i class="fa-solid fa-pen-to-square text-base mb-1"></i>
-                <span>ทำข้อสอบ</span>
+                <span>ข้อสอบ</span>
             </button>
             <button onclick="switchTab('calc')" class="mobile-nav-btn text-center text-indigo-300 flex flex-col items-center">
                 <i class="fa-solid fa-calculator text-base mb-1"></i>
@@ -139,7 +103,7 @@
     <!-- Main Content Area -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
 
-        <!-- TAB 1: สรุปบทเรียน (SUMMARY SECTION) -->
+        <!-- TAB 1: SUMMARY SECTION -->
         <section id="tab-summary" class="tab-content space-y-6">
             <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -154,7 +118,6 @@
                 </div>
             </div>
 
-            <!-- Chapter Filter Badges -->
             <div class="flex flex-wrap gap-2 pt-2">
                 <button onclick="filterSummary('all', this)" class="summary-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-indigo-600 text-white shadow-sm">ทั้งหมด (All Topics)</button>
                 <button onclick="filterSummary('strategy', this)" class="summary-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-slate-200 text-slate-700 hover:bg-slate-300">W1: Competitive Strategy</button>
@@ -165,8 +128,522 @@
             </div>
 
             <div id="summary-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Dynamic HTML generated via JS -->
-        // --- INIT ON PAGE LOAD SAFEGUARD ---
+                <!-- Cards generated via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 2: FLASHCARDS SECTION -->
+        <section id="tab-flashcards" class="tab-content hidden space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-clone text-indigo-600"></i> แฟลชการ์ดทบทวนความจำ (25 Cards)
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">คลิกที่การ์ดเพื่อพลิกดูคำตอบและคำแปลภาษาไทย</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="shuffleFlashcards()" class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs font-medium hover:bg-slate-200 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-shuffle"></i> สุ่มการ์ด
+                    </button>
+                    <button onclick="resetFlashcards()" class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs font-medium hover:bg-slate-200 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-rotate"></i> เริ่มใหม่
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                <div class="flex justify-between text-xs font-semibold text-slate-600">
+                    <span id="card-progress-text">การ์ดใบที่ 1 / 25</span>
+                    <span id="card-score-text" class="text-indigo-600">จำได้แล้ว: 0 ใบ</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div id="card-progress-bar" class="bg-indigo-600 h-full w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <div class="max-w-xl mx-auto">
+                <div class="card-flip w-full min-h-[340px] cursor-pointer" onclick="flipCard()">
+                    <div id="card-inner" class="card-inner relative w-full min-h-[340px] rounded-2xl shadow-xl border border-indigo-100 bg-white">
+                        <div class="card-front absolute inset-0 p-8 flex flex-col justify-between rounded-2xl bg-gradient-to-br from-white via-indigo-50/30 to-purple-50/50">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full" id="card-tag">Term Concept</span>
+                                <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-hand-pointer mr-1"></i> คลิกเพื่อพลิกการ์ด</span>
+                            </div>
+                            <div class="my-auto text-center space-y-3">
+                                <h3 id="card-front-title" class="text-2xl font-bold text-slate-900">Business Thinking</h3>
+                                <p id="card-front-th" class="text-sm font-medium text-indigo-600">การคิดเชิงธุรกิจ</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-xs text-slate-500 italic bg-white/80 py-2 px-4 rounded-xl border border-slate-100 shadow-sm inline-block" id="card-hint">
+                                    💡 Hint: Deconstructing organizational factors.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card-back absolute inset-0 p-8 flex flex-col justify-between rounded-2xl bg-indigo-900 text-white">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold px-3 py-1 bg-indigo-800 text-indigo-200 rounded-full">คำอธิบาย & คำแปลไทย</span>
+                                <span class="text-xs text-indigo-300 font-mono"><i class="fa-solid fa-check-circle mr-1"></i> เฉลยการ์ด</span>
+                            </div>
+                            <div class="my-auto space-y-3 text-left">
+                                <h4 class="text-sm font-semibold text-indigo-300 border-b border-indigo-800 pb-1">English Definition</h4>
+                                <p id="card-back-text-en" class="text-sm text-indigo-100 leading-relaxed"></p>
+                                <h4 class="text-sm font-semibold text-emerald-300 border-b border-indigo-800 pb-1 pt-2">ความหมายภาษาไทย</h4>
+                                <p id="card-back-text-th" class="text-sm text-emerald-100 leading-relaxed"></p>
+                            </div>
+                            <div class="text-right text-xs text-indigo-300">คลิกเพื่อพลิกกลับ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mt-6">
+                    <button onclick="prevCard()" class="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 rounded-xl font-medium text-sm hover:bg-slate-50 transition shadow-sm flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> ย้อนกลับ
+                    </button>
+                    <div class="flex gap-2">
+                        <button onclick="markCard(false)" class="px-4 py-2.5 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl font-medium text-xs hover:bg-rose-100 transition">
+                            <i class="fa-solid fa-xmark mr-1"></i> ต้องทบทวนอีก
+                        </button>
+                        <button onclick="markCard(true)" class="px-4 py-2.5 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl font-medium text-xs hover:bg-emerald-100 transition">
+                            <i class="fa-solid fa-check mr-1"></i> จำได้แล้ว
+                        </button>
+                    </div>
+                    <button onclick="nextCard()" class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium text-sm hover:bg-indigo-700 transition shadow-md flex items-center gap-2">
+                        ถัดไป <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: PRACTICE QUIZ SECTION -->
+        <section id="tab-quiz" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-pen-to-square text-indigo-600"></i> คลังข้อสอบวิเคราะห์สถานการณ์ (4 ชุด 40 ข้อใหม่)
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1" id="quiz-set-title-display">กำลังทำข้อสอบ: ชุดที่ 1 - Competitive Strategy & Industry Analysis</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <span id="quiz-score-badge" class="px-3 py-1.5 bg-indigo-50 border border-indigo-200 text-indigo-700 font-semibold rounded-xl text-xs">
+                            คะแนนชุดนี้: 0 / 10
+                        </span>
+                        <button onclick="restartCurrentQuizSet()" class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-xl text-xs font-medium hover:bg-slate-200 transition">
+                            <i class="fa-solid fa-arrows-rotate mr-1"></i> รีเซ็ตชุดนี้
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Set Selectors -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-slate-100">
+                    <button onclick="switchQuizSet(1)" id="set-btn-1" class="quiz-set-btn p-2.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm transition text-center">
+                        ชุดที่ 1: Strategy & Industry
+                    </button>
+                    <button onclick="switchQuizSet(2)" id="set-btn-2" class="quiz-set-btn p-2.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-center">
+                        ชุดที่ 2: STP & Market Sizing
+                    </button>
+                    <button onclick="switchQuizSet(3)" id="set-btn-3" class="quiz-set-btn p-2.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-center">
+                        ชุดที่ 3: BMC & Math Formulas
+                    </button>
+                    <button onclick="switchQuizSet(4)" id="set-btn-4" class="quiz-set-btn p-2.5 rounded-xl text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-center">
+                        ชุดที่ 4: Final Comprehensive
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Questions Container -->
+            <div id="quiz-container" class="space-y-6"></div>
+
+            <div class="flex justify-end pt-4">
+                <button onclick="nextQuizSet()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-indigo-700 transition shadow-lg flex items-center gap-2">
+                    <span>ลุยต่อข้อสอบชุดถัดไป</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- TAB 4: CALCULATOR SECTION -->
+        <section id="tab-calc" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-calculator text-indigo-600"></i> เครื่องคิดเลขสูตรธุรกิจ & คำนวณทางการเงิน
+                </h2>
+                <p class="text-xs text-slate-500 mt-1">ทดลองใส่ตัวเลขจำลองเพื่อความเข้าใจในสูตร Master Profit, Break-Even Point (BEP), ROI และ Bottom-Up SOM</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-md space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-emerald-600"></i> Master Profit & Break-Even Point (BEP)
+                        </h3>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-semibold">สูตรกำไร & จุดคุ้มทุน</span>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">ราคาขายต่อหน่วย (Unit Price: P) [บาท]</label>
+                            <input type="number" id="calc-p" value="150" oninput="calculateBusinessMath()" class="w-full p-2.5 border rounded-lg bg-slate-50 font-mono">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">ต้นทุนผันแปรต่อหน่วย (Variable Cost: VC) [บาท]</label>
+                            <input type="number" id="calc-vc" value="50" oninput="calculateBusinessMath()" class="w-full p-2.5 border rounded-lg bg-slate-50 font-mono">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">ต้นทุนคงที่รวม (Total Fixed Cost: TFC) [บาท]</label>
+                            <input type="number" id="calc-tfc" value="120000" oninput="calculateBusinessMath()" class="w-full p-2.5 border rounded-lg bg-slate-50 font-mono">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">จำนวนที่ผลิต/ขายได้ (Quantity: Q) [ชิ้น]</label>
+                            <input type="number" id="calc-q" value="2000" oninput="calculateBusinessMath()" class="w-full p-2.5 border rounded-lg bg-slate-50 font-mono">
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 text-white p-4 rounded-xl space-y-2 mt-4 font-mono text-xs">
+                        <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                            <span class="text-slate-400">กำไรขอบขั้นต้นต่อหน่วย (Unit CM):</span>
+                            <span id="out-cm" class="text-emerald-400 font-bold">100 บาท</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                            <span class="text-slate-400">จุดคุ้มทุน (BEP in Units):</span>
+                            <span id="out-bep" class="text-amber-400 font-bold">1,200 ชิ้น</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                            <span class="text-slate-400">รายได้รวม (Total Revenue):</span>
+                            <span id="out-tr" class="text-indigo-300 font-bold">300,000 บาท</span>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span class="text-slate-300 font-semibold">กำไรสุทธิ (Net Profit):</span>
+                            <span id="out-profit" class="text-emerald-400 font-bold text-sm">80,000 บาท</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-md space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                            <i class="fa-solid fa-building-columns text-purple-600"></i> ROI & Bottom-Up SOM Calculator
+                        </h3>
+                        <span class="text-xs bg-purple-100 text-purple-800 px-2.5 py-0.5 rounded-full font-semibold">ผลตอบแทน & ขนาดตลาด</span>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="font-semibold text-indigo-600 border-b pb-1">1) คำนวณ ROI (%)</div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">เงินลงทุนรวม</label>
+                                <input type="number" id="calc-roi-inv" value="200000" oninput="calculateBusinessMath()" class="w-full p-2 border rounded-lg bg-slate-50 font-mono">
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">กำไรสุทธิรวม</label>
+                                <input type="number" id="calc-roi-profit" value="240000" oninput="calculateBusinessMath()" class="w-full p-2 border rounded-lg bg-slate-50 font-mono">
+                            </div>
+                        </div>
+
+                        <div class="font-semibold text-indigo-600 border-b pb-1 pt-2">2) คำนวณ Bottom-Up SOM</div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">จำนวนสาขา</label>
+                                <input type="number" id="calc-som-branches" value="2" oninput="calculateBusinessMath()" class="w-full p-2 border rounded-lg bg-slate-50 font-mono">
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">วันทำการต่อปี</label>
+                                <input type="number" id="calc-som-days" value="300" oninput="calculateBusinessMath()" class="w-full p-2 border rounded-lg bg-slate-50 font-mono">
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">กำลังผลิต/วัน</label>
+                                <input type="number" id="calc-som-cap" value="200" oninput="calculateBusinessMath()" class="w-full p-2 border rounded-lg bg-slate-50 font-mono">
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">ราคาเฉลี่ยต่อบิล</label>
+                                <input type="number" id="calc-som-price" value="150" oninput="calculateBusinessMath()" class="w-full p-2 border rounded-lg bg-slate-50 font-mono">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 text-white p-4 rounded-xl space-y-2 mt-4 font-mono text-xs">
+                        <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                            <span class="text-slate-400">ผลตอบแทนการลงทุน (ROI %):</span>
+                            <span id="out-roi" class="text-purple-400 font-bold text-sm">120%</span>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span class="text-slate-300 font-semibold">Bottom-Up SOM (ต่อปี):</span>
+                            <span id="out-som" class="text-amber-400 font-bold text-sm">18,000,000 บาท</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-medium text-slate-300">INT110 Business Thinking Complete Study Companion & Exam Readiness Platform</p>
+            <p class="text-slate-500">สรุปเนื้อหา + แฟลชการ์ด 25 ใบ + คลังข้อสอบ 4 ชุด (40 ข้อ) | KMUTT SIT</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Block Properly Placed -->
+    <script>
+        // --- DATASETS ---
+        const summaryData = [
+            {
+                id: "w1-1", category: "strategy", week: "Week 1",
+                titleEN: "Operational Effectiveness vs. Strategic Positioning",
+                titleTH: "ประสิทธิภาพในการดำเนินงาน VS การกำหนดตำแหน่งเชิงยุทธศาสตร์",
+                descEN: "Operational Effectiveness (OE) means performing similar activities better than rivals (efficiency). Strategic Positioning involves performing DIFFERENT activities or similar activities in UNIQUE ways.",
+                descTH: "OE คือการทำกิจกรรมเหมือนคู่แข่งแต่ทำได้ดีกว่าหรือเร็วกว่า ส่วน Strategic Positioning คือการเลือกทำกิจกรรมที่แตกต่าง หรือทำแบบพิเศษเฉพาะตัวเพื่อมอบคุ้มค่าที่ไม่เหมือนใคร",
+                highlights: ["OE = Doing things better (แข่งกันที่ความเร็ว/ต้นทุน)", "Strategy = Doing things differently (สร้างความต่างเฉพาะตัว)"],
+                icon: "fa-compass-drafting"
+            },
+            {
+                id: "w1-2", category: "strategy", week: "Week 1",
+                titleEN: "Porter's Generic Strategies",
+                titleTH: "กลยุทธ์การแข่งขันพื้นฐานของพอร์เตอร์",
+                descEN: "Three core strategic choices to gain competitive advantage: Overall Cost Leadership, Differentiation, and Focus.",
+                descTH: "กลยุทธ์หลัก 3 ทางเลือก: 1) การเป็นผู้นำด้านต้นทุนต่ำ 2) การสร้างความแตกต่าง และ 3) การเจาะจงกลุ่มเป้าหมายเฉพาะส่วน (Focus)",
+                highlights: ["Overall Cost Leadership (ต้นทุนต่ำสุด)", "Differentiation (สร้างความต่าง)", "Focus (เจาะตลาด Niche)"],
+                icon: "fa-chess-king"
+            },
+            {
+                id: "w2-1", category: "external", week: "Week 2",
+                titleEN: "PESTEL Framework",
+                titleTH: "กรอบการวิเคราะห์สภาพแวดล้อมมหภาค (PESTEL)",
+                descEN: "An external macro-environmental tool assessing Political, Economic, Social, Technological, Environmental, and Legal factors.",
+                descTH: "วิเคราะห์ปัจจัยภายนอกที่ไม่สามารถควบคุมได้: การเมือง (P), เศรษฐกิจ (E), สังคม (S), เทคโนโลยี (T), สิ่งแวดล้อม (E), และกฎหมาย (L)",
+                highlights: ["Political, Economic, Social, Tech, Environmental, Legal"],
+                icon: "fa-globe"
+            },
+            {
+                id: "w2-2", category: "external", week: "Week 2",
+                titleEN: "Porter's Five Forces Model",
+                titleTH: "แบบจำลองแรงกดดันทั้ง 5 ของพอร์เตอร์",
+                descEN: "External framework evaluating: Threat of New Entrants, Power of Suppliers, Power of Buyers, Threat of Substitutes, and Industry Rivalry.",
+                descTH: "ประเมินความน่าสนใจของอุตสาหกรรม: ผู้เล่นหน้าใหม่, อำนาจซัพพลายเออร์, อำนาจผู้ซื้อ, สินค้าทดแทน, และคู่แข่งเดิม",
+                highlights: ["ประเมินระดับความแรงกดดันและความน่าสนใจในการทำกำไร"],
+                icon: "fa-shield-halved"
+            },
+            {
+                id: "w3-1", category: "internal", week: "Week 3",
+                titleEN: "Porter's Value Chain & WTP",
+                titleTH: "ห่วงโซ่คุณค่าของพอร์เตอร์ & ความยินดีที่จะจ่าย (WTP)",
+                descEN: "Divides activities into Primary Activities (Logistics, Operations, Sales) and Support Activities (HR, Tech). Maximize Customer WTP.",
+                descTH: "แบ่งกิจกรรมภายในเป็น 5 กิจกรรมหลัก และ 4 กิจกรรมสนับสนุน เพื่อเพิ่มความยินดีที่จะจ่าย (WTP) ของลูกค้า",
+                highlights: ["Primary vs. Support Activities", "WTP = เพดานราคาที่ลูกค้ายอมจ่าย"],
+                icon: "fa-link"
+            },
+            {
+                id: "w3-2", category: "internal", week: "Week 3",
+                titleEN: "SWOT & TOWS Matrix Strategies",
+                titleTH: "การวิเคราะห์ SWOT และเมทริกซ์กำหนดกลยุทธ์ TOWS",
+                descEN: "SWOT evaluates Internal (S/W) vs External (O/T). TOWS generates actionable strategies: SO, ST, WO, WT.",
+                descTH: "SWOT วิเคราะห์ S/W/O/T แล้วนำมาจับคู่ใน TOWS: SO (รุก), ST (ป้องกัน), WO (ปรับปรุง), WT (ตั้งรับ)",
+                highlights: ["SO: เชิงรุก | ST: เชิงป้องกัน | WO: เชิงปรับปรุง | WT: เชิงตั้งรับ"],
+                icon: "fa-table-cells-large"
+            },
+            {
+                id: "w4-1", category: "marketing", week: "Week 4",
+                titleEN: "STP Marketing Framework & Persona",
+                titleTH: "กรอบกลยุทธ์การตลาด STP และ Customer Persona",
+                descEN: "STP consists of Segmentation, Targeting, and Positioning. Persona represents the ideal user.",
+                descTH: "STP: แบ่งส่วนตลาด (S) -> เลือกกลุ่มเป้าหมาย (T) -> วางตำแหน่งในใจ (P). Persona คือโปรไฟล์ลูกค้าสมมุติเชิงลึก",
+                highlights: ["STP Process", "Persona = Demographics + Pain Points + Goals"],
+                icon: "fa-bullseye"
+            },
+            {
+                id: "w5-1", category: "finance", week: "Week 5",
+                titleEN: "Business Model Canvas (BMC) & Freemium",
+                titleTH: "โมเดลธุรกิจ 9 ช่อง (BMC) & โมเดล Freemium",
+                descEN: "BMC covers 9 building blocks. Freemium offers basic features for free while monetizing advanced features.",
+                descTH: "BMC คือผืนผ้าใบ 9 ช่องอธิบายการส่งมอบมูลค่า ส่วน Freemium คือเปิดให้ใช้ฟรีเพื่อขยายฐานแล้วเก็บเงินจากฟีเจอร์พรีเมียม",
+                highlights: ["BMC 9 Building Blocks", "Freemium = Free Basic + Paid Premium"],
+                icon: "fa-cubes"
+            },
+            {
+                id: "w5-2", category: "finance", week: "Week 5",
+                titleEN: "Master Profit Equation, BEP & ROI Formulas",
+                titleTH: "สูตรคำนวณทางการเงิน: Master Profit, BEP และ ROI",
+                descEN: "Profit = (P x Q) - [(VC x Q) + TFC]. BEP = TFC / (P - VC). ROI = (Net Profit / Investment) x 100%.",
+                descTH: "สูตรกำไร: Profit = (P x Q) - [(VC x Q) + TFC]. จุดคุ้มทุน: BEP = TFC / (P - VC). ROI = (กำไรสุทธิ / เงินลงทุน) x 100%",
+                highlights: ["Contribution Margin = P - VC"],
+                icon: "fa-calculator"
+            }
+        ];
+
+        const flashcardsData = [
+            { tag: "Strategy", frontEN: "Business Thinking", frontTH: "การคิดเชิงธุรกิจ", hint: "Deconstructing factors.", backEN: "Deconstructing organizational factors to construct new patterns of trust and decision-making.", backTH: "กระบวนการย่อยองค์ประกอบขององค์กรเพื่อสร้างรูปแบบใหม่ของความไว้วางใจและการตัดสินใจ" },
+            { tag: "Strategy", frontEN: "Operational Effectiveness vs Strategic Positioning", frontTH: "OE VS Strategic Positioning", hint: "Better vs Different.", backEN: "OE means doing similar activities better. Strategic Positioning means doing different activities.", backTH: "OE คือการทำดีกว่าคู่แข่ง ส่วน Strategic Positioning คือการทำสิ่งที่แตกต่าง" },
+            { tag: "External", frontEN: "PESTEL Analysis Framework", frontTH: "กรอบวิเคราะห์ PESTEL", hint: "Macro environment.", backEN: "Political, Economic, Social, Technological, Environmental, and Legal factors.", backTH: "ปัจจัยการเมือง เศรษฐกิจ สังคม เทคโนโลยี สิ่งแวดล้อม และกฎหมาย" },
+            { tag: "External", frontEN: "Porter's Five Forces Model", frontTH: "แบบจำลองแรงกดดันทั้ง 5", hint: "Industry structural analysis.", backEN: "Threat of Entrants, Supplier Power, Buyer Power, Threat of Substitutes, Rivalry.", backTH: "ผู้เล่นใหม่ ซัพพลายเออร์ ผู้ซื้อ สินค้าทดแทน และการแข่งขันในอุตสาหกรรม" },
+            { tag: "Finance", frontEN: "Master Profit Equation", frontTH: "สมการกำไรหลัก", hint: "Profit formula.", backEN: "Profit = (P x Q) - [(VC x Q) + TFC]", backTH: "กำไรสุทธิ = (ราคา x จำนวน) - [(ต้นทุนผันแปร x จำนวน) + ต้นทุนคงที่รวม]" },
+            { tag: "Finance", frontEN: "Break-Even Point (BEP)", frontTH: "สูตรคำนวณจุดคุ้มทุน", hint: "TFC / CM", backEN: "BEP_units = TFC / (P - VC)", backTH: "จุดคุ้มทุน (ชิ้น) = ต้นทุนคงที่รวม / (ราคาขาย - ต้นทุนผันแปรต่อหน่วย)" }
+        ];
+
+        // 4 COMPLETE QUIZ SETS (40 Scenario Questions)
+        const quizSetsData = {
+            1: {
+                title: "ชุดที่ 1 - Competitive Strategy & Industry Analysis",
+                questions: [
+                    {
+                        id: 101,
+                        questionEN: "A fast-fashion retailer speeds up its supply chain to mirror competitor designs within 7 days, reducing production costs by 10%. However, rivals copy this process within months. Why does this NOT represent a sustainable strategy according to Michael Porter?",
+                        questionTH: "ร้านค้าแฟชั่นเร่งห่วงโซ่อุปทานจนก๊อปปี้ชุดตามกระแสได้ใน 7 วันและลดต้นทุนได้ 10% แต่คู่แข่งทำตามได้ในไม่กี่เดือน ตาม Porter เหตุใดจึงยังไม่ใช่กลยุทธ์ที่ยั่งยืน?",
+                        options: [
+                            "It only enhances Operational Effectiveness (OE) without building a unique strategic position.",
+                            "It violates supply-side economies of scale in generic fashion markets.",
+                            "It creates excessive customer switching costs that reduce sales volume.",
+                            "It focuses on differentiation focus instead of cost leadership."
+                        ],
+                        optionsTH: [
+                            "เป็นเพียงการเพิ่ม Operational Effectiveness (OE) แต่ไม่ได้สร้างตำแหน่งทางยุทธศาสตร์ที่แตกต่าง (Strategic Position)",
+                            "ฝ่าฝืนหลักการประหยัดต่อขนาดฝั่งอุปทานในตลาดแฟชั่น",
+                            "สร้าง Switching Costs ที่สูงเกินไปจนลดปริมาณการขาย",
+                            "เน้น Differentiation Focus แทนที่จะเป็น Cost Leadership"
+                        ],
+                        correctIndex: 0,
+                        conceptSummary: "Operational Effectiveness (OE) คือการปรับปรุงความเร็วหรือลดต้นทุนในกิจกรรมที่คล้ายกับคู่แข่ง ซึ่งเลียนแบบได้ง่าย แต่ Strategy ที่ยั่งยืนต้องเกิดจาก Strategic Positioning หรือการทำสิ่งที่แตกต่าง",
+                        wrongExplanations: [
+                            "",
+                            "การประหยัดต่อขนาดไม่ได้ถูกฝ่าฝืน การลดต้นทุนเกิดขึ้นจริงแต่ปัญหาคือคู่แข่งเลียนแบบได้ง่าย",
+                            "กระบวนการผลิตเร็วขึ้นไม่ได้ทำให้ลูกค้าเกิด Switching Cost หรือย้ายแบรนด์ยากขึ้น",
+                            "บริษัทไม่ได้ทำ Differentiation Focus แต่กำลังแข่งประสิทธิภาพกระบวนการผลิต"
+                        ],
+                        correctExplanation: "ถูกต้อง! การปรับปรุงความเร็วและลดต้นทุนเป็นเพียง Operational Effectiveness (OE) บน Productivity Frontier ซึ่งคู่แข่งก๊อปปี้ได้ง่าย กลยุทธ์ที่ยั่งยืนต้องเลือก Trade-offs และทำสิ่งที่แตกต่าง"
+                    },
+                    {
+                        id: 102,
+                        questionEN: "An enterprise SaaS platform sees its renewal rate jump to 98% because migrating customer data to another provider takes 6 months and $50,000 in operational downtime. Which Porter's Five Forces entry barrier is protecting this software company?",
+                        questionTH: "แพลตฟอร์ม SaaS สำหรับองค์กรมีอัตราต่ออายุสูงถึง 98% เนื่องจากลูกค้าย้ายข้อมูลไปใช้เจ้าอื่นต้องใช้เวลานาน 6 เดือนและเสียค่าใช้จ่ายระบบหยุดทำงาน $50,000 อุปสรรคการเข้าสู่ตลาด (Entry Barrier) ข้อใดปกป้องบริษัทนี้?",
+                        options: [
+                            "Demand-side benefits of scale (Network Effects)",
+                            "High customer switching costs",
+                            "Supply-side economies of scale",
+                            "Restrictive government licensing policy"
+                        ],
+                        optionsTH: [
+                            "ผลประโยชน์การขยายขนาดฝั่งอุปสงค์ (Network Effects)",
+                            "ต้นทุนการเปลี่ยนผู้ให้บริการสูง (High Customer Switching Costs)",
+                            "การประหยัดต่อขนาดฝั่งอุปทาน (Supply-side Economies of Scale)",
+                            "นโยบายสัมปทานจากรัฐบาล"
+                        ],
+                        correctIndex: 1,
+                        conceptSummary: "Customer Switching Costs คือต้นทุนทางการเงิน เวลา หรือการดำเนินงานที่ลูกค้าต้องจ่ายเมื่อย้ายไปใช้สินค้าหรือบริการของคู่แข่ง",
+                        wrongExplanations: [
+                            "Network Effects หมายถึงคุณค่าที่เพิ่มขึ้นตามจำนวนผู้ใช้งานในระบบ ไม่ใช่ความยากในการย้ายข้อมูล",
+                            "",
+                            "Economies of Scale ฝั่งอุปทานเกี่ยวกับการลดต้นทุนการผลิตต่อหน่วยของเจ้าตลาด ไม่เกี่ยวกับการย้ายระบบของลูกค้า",
+                            "ในโจทย์ไม่ได้กล่าวถึงใบอนุญาตหรือสัมปทานจากรัฐบาล"
+                        ],
+                        correctExplanation: "ถูกต้อง! ค่าใช้จ่าย $50,000 และเวลา 6 เดือนในการย้ายระบบคือ Customer Switching Costs ที่สูงมาก กีดกันผู้เล่นหน้าใหม่และรักษาฐานลูกค้าไว้ได้"
+                    }
+                ]
+            },
+            2: {
+                title: "ชุดที่ 2 - STP Marketing & Market Sizing",
+                questions: [
+                    {
+                        id: 201,
+                        questionEN: "A boutique fitness gym targets working professionals aged 25-40 who prioritize mental wellness and community networking over bodybuilding. Which segmentation criteria are being primarily utilized?",
+                        questionTH: "ฟิตเนสบูติกเจาะกลุ่มคนทำงานอายุ 25-40 ปีที่เน้นสุขภาพจิตและการสร้างคอนเนกชันมากกว่าการเล่นกล้าม การแบ่งส่วนตลาดนี้ใช้เกณฑ์ใดเป็นหลัก?",
+                        options: [
+                            "Demographic and Psychographic segmentation",
+                            "Geographic and Behavioral segmentation",
+                            "Technographic and Firmographic segmentation",
+                            "Occasion-based and Benefit-seeking segmentation"
+                        ],
+                        optionsTH: [
+                            "ประชากรศาสตร์ (Demographic) และ จิตวิทยา/ไลฟ์สไตล์ (Psychographic)",
+                            "ภูมิศาสตร์ (Geographic) และ พฤติกรรมศาสตร์ (Behavioral)",
+                            "เทคโนโลยี (Technographic) และ โครงสร้างองค์กร (Firmographic)",
+                            "แบ่งตามโอกาสใช้งาน และการแสวงหาผลประโยชน์"
+                        ],
+                        correctIndex: 0,
+                        conceptSummary: "Demographic แบ่งตามอายุ เพศ อาชีพ ส่วน Psychographic แบ่งตามค่านิยม ไลฟ์สไตล์ ความเชื่อ และสุขภาพจิต",
+                        wrongExplanations: [
+                            "",
+                            "ในโจทย์ไม่ได้ระบุที่ตั้งหรือทำเล (Geographic)",
+                            "Technographic เกี่ยวกับอุปกรณ์เทคโนโลยีที่ใช้ ไม่เกี่ยวข้องกับฟิตเนส",
+                            "เน้นไลฟ์สไตล์และสุขภาพจิตมากกว่าแค่โอกาสใช้งาน"
+                        ],
+                        correctExplanation: "ถูกต้อง! อายุ 25-40 ปีคือ Demographic (ประชากรศาสตร์) ส่วนการเน้นสุขภาพจิตและคอนเนกชันคือ Psychographic (จิตวิทยาและไลฟ์สไตล์)"
+                    }
+                ]
+            },
+            3: {
+                title: "ชุดที่ 3 - Business Model Canvas & Financial Math",
+                questions: [
+                    {
+                        id: 301,
+                        questionEN: "A bakery has Total Fixed Costs of $60,000 per month. Selling price per cake is $30, and Variable Cost per cake is $10. What is the Break-Even Point (BEP) in units?",
+                        questionTH: "ร้านเบเกอรี่มีต้นทุนคงที่รวม $60,000 ต่อเดือน ขายเค้กราคาปอนด์ละ $30 ต้นทุนผันแปร $10 จุดคุ้มทุน (BEP) คือกี่ปอนด์?",
+                        options: [
+                            "2,000 cakes",
+                            "3,000 cakes",
+                            "6,000 cakes",
+                            "1,500 cakes"
+                        ],
+                        optionsTH: [
+                            "2,000 ปอนด์",
+                            "3,000 ปอนด์",
+                            "6,000 ปอนด์",
+                            "1,500 ปอนด์"
+                        ],
+                        correctIndex: 0,
+                        conceptSummary: "สูตรจุดคุ้มทุน BEP (Units) = TFC / (P - VC) โดยที่ P - VC คือ Contribution Margin ต่อหน่วย",
+                        wrongExplanations: [
+                            "",
+                            "3,000 เกิดจาก $60,000 / $20 ลบเลขผิดพลาด",
+                            "6,000 เกิดจากนำ $60,000 ไปหารราคาขาย $10 โดยไม่หักต้นทุนผันแปร",
+                            "1,500 เป็นคำนวณสุ่มสี่สุ่มห้า"
+                        ],
+                        correctExplanation: "ถูกต้อง! BEP = 60,000 / (30 - 10) = 60,000 / 20 = 2,000 ปอนด์"
+                    }
+                ]
+            },
+            4: {
+                title: "ชุดที่ 4 - Final Comprehensive Mock Exam",
+                questions: [
+                    {
+                        id: 401,
+                        questionEN: "An investor places $100,000 into an e-commerce brand. In Year 1, Net Profit is $30,000. What is the Return on Investment (ROI)?",
+                        questionTH: "นักลงทุนลงเงิน $100,000 ในแบรนด์อีคอมเมิร์ซ ปีแรกทำกำไรสุทธิได้ $30,000 อัตราผลตอบแทนจากการลงทุน (ROI) คือกี่ %?",
+                        options: [
+                            "30% ROI",
+                            "130% ROI",
+                            "3.3% ROI",
+                            "300% ROI"
+                        ],
+                        optionsTH: [
+                            "30%",
+                            "130%",
+                            "3.3%",
+                            "300%"
+                        ],
+                        correctIndex: 0,
+                        conceptSummary: "สูตร ROI (%) = (กำไรสุทธิ / เงินลงทุนรวม) x 100%",
+                        wrongExplanations: [
+                            "",
+                            "130% เกิดจากรวมเงินต้นไปด้วย แต่อัตราผลตอบแทน ROI คิดเฉพาะกำไรสุทธิ",
+                            "3.3% เกิดจากการหารผิดฝั่ง",
+                            "300% คำนวณผิดพลาดอย่างรุนแรง"
+                        ],
+                        correctExplanation: "ถูกต้อง! ROI = (30,000 / 100,000) x 100% = 30%"
+                    }
+                ]
+            }
+        };
+
+        // --- APP STATE VARIABLES ---
+        let currentTab = 'summary';
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        let cardScore = 0;
+        let currentQuizSet = 1;
+        let userSetAnswers = { 1: {}, 2: {}, 3: {}, 4: {} };
+
+        // --- SAFE INITIALIZATION ---
         function initApp() {
             try {
                 renderSummaryCards(summaryData);
@@ -174,7 +651,7 @@
                 renderQuiz();
                 calculateBusinessMath();
             } catch (err) {
-                console.error("App initialization error:", err);
+                console.error("App init error:", err);
             }
         }
 
@@ -183,29 +660,26 @@
         } else {
             initApp();
         }
-        window.onload = initApp;
 
-        // --- NAVIGATION TAB SWITCHING ---
+        // --- TAB SWITCHING ---
         function switchTab(tabId) {
-            try {
-                currentTab = tabId;
-                document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-                const target = document.getElementById(`tab-${tabId}`);
-                if (target) target.classList.remove('hidden');
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) target.classList.remove('hidden');
 
-                document.querySelectorAll('.nav-btn').forEach(btn => {
-                    btn.classList.remove('bg-white/10', 'text-white');
-                    btn.classList.add('text-indigo-200');
-                });
-                const activeNav = document.getElementById(`nav-${tabId}`);
-                if (activeNav) {
-                    activeNav.classList.add('bg-white/10', 'text-white');
-                    activeNav.classList.remove('text-indigo-200');
-                }
-            } catch(e) { console.error(e); }
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white/10', 'text-white');
+                btn.classList.add('text-indigo-200');
+            });
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.add('bg-white/10', 'text-white');
+                activeNav.classList.remove('text-indigo-200');
+            }
         }
 
-        // --- SUMMARY SECTION RENDERING ---
+        // --- SUMMARY RENDER ---
         function renderSummaryCards(dataList) {
             const container = document.getElementById('summary-cards-container');
             if (!container) return;
@@ -215,7 +689,12 @@
                 const card = document.createElement('div');
                 card.className = "bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4";
                 
-                let highlightsHTML = item.highlights.map(h => `<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>${h}</span></li>`).join('');
+                let highlightsHTML = item.highlights.map(h => 
+                    `<li class="flex items-start gap-2 text-xs text-slate-600">
+                        <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> 
+                        <span>${h}</span>
+                    </li>`
+                ).join('');
 
                 card.innerHTML = `
                     <div class="flex items-start justify-between">
@@ -230,12 +709,10 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="space-y-2 text-xs border-t border-slate-100 pt-3">
                         <p class="text-slate-700 leading-relaxed"><strong class="text-slate-900">EN:</strong> ${item.descEN}</p>
                         <p class="text-slate-600 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-100"><strong class="text-indigo-700">แปลไทย:</strong> ${item.descTH}</p>
                     </div>
-
                     <ul class="space-y-1 bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
                         ${highlightsHTML}
                     </ul>
@@ -244,55 +721,45 @@
             });
         }
 
-        function filterSummary(category, targetBtn) {
+        function filterSummary(category, btnElement) {
             document.querySelectorAll('.summary-filter-btn').forEach(btn => {
                 btn.classList.remove('bg-indigo-600', 'text-white');
                 btn.classList.add('bg-slate-200', 'text-slate-700');
             });
-            if (targetBtn) {
-                targetBtn.classList.remove('bg-slate-200', 'text-slate-700');
-                targetBtn.classList.add('bg-indigo-600', 'text-white');
+            if (btnElement) {
+                btnElement.classList.remove('bg-slate-200', 'text-slate-700');
+                btnElement.classList.add('bg-indigo-600', 'text-white');
             }
 
             if (category === 'all') {
                 renderSummaryCards(summaryData);
             } else {
-                const filtered = summaryData.filter(item => item.category === category);
-                renderSummaryCards(filtered);
+                renderSummaryCards(summaryData.filter(item => item.category === category));
             }
         }
 
-        // --- FLASHCARDS RENDERING & LOGIC ---
+        // --- FLASHCARDS LOGIC ---
         function renderFlashcard() {
             const card = flashcardsData[currentCardIndex];
             if (!card) return;
-
             document.getElementById('card-tag').innerText = card.tag;
             document.getElementById('card-front-title').innerText = card.frontEN;
             document.getElementById('card-front-th').innerText = card.frontTH;
             document.getElementById('card-hint').innerText = `💡 Hint: ${card.hint}`;
-
             document.getElementById('card-back-text-en').innerText = card.backEN;
             document.getElementById('card-back-text-th').innerText = card.backTH;
 
             isCardFlipped = false;
             document.getElementById('card-inner').classList.remove('is-flipped');
-
             document.getElementById('card-progress-text').innerText = `การ์ดใบที่ ${currentCardIndex + 1} / ${flashcardsData.length}`;
-            const pct = ((currentCardIndex + 1) / flashcardsData.length) * 100;
-            document.getElementById('card-progress-bar').style.width = `${pct}%`;
+            document.getElementById('card-progress-bar').style.width = `${((currentCardIndex + 1) / flashcardsData.length) * 100}%`;
         }
 
         function flipCard() {
             isCardFlipped = !isCardFlipped;
             const inner = document.getElementById('card-inner');
-            if (inner) {
-                if (isCardFlipped) {
-                    inner.classList.add('is-flipped');
-                } else {
-                    inner.classList.remove('is-flipped');
-                }
-            }
+            if (isCardFlipped) inner.classList.add('is-flipped');
+            else inner.classList.remove('is-flipped');
         }
 
         function nextCard() {
@@ -335,7 +802,6 @@
         // --- MULTI-SET QUIZ RENDER & LOGIC ---
         function switchQuizSet(setId) {
             currentQuizSet = setId;
-
             document.querySelectorAll('.quiz-set-btn').forEach(btn => {
                 btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm', 'font-bold');
                 btn.classList.add('bg-slate-100', 'text-slate-700', 'font-medium');
@@ -356,25 +822,12 @@
         }
 
         function nextQuizSet() {
-            if (currentQuizSet === 'set1') switchQuizSet('set2');
-            else if (currentQuizSet === 'set2') switchQuizSet('set3');
-            else if (currentQuizSet === 'set3') switchQuizSet('set4');
-            else switchQuizSet('set1');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function setQuizLangMode(mode) {
-            quizLangMode = mode;
-            document.querySelectorAll('.quiz-lang-btn').forEach(btn => {
-                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm', 'font-semibold');
-                btn.classList.add('text-slate-600');
-            });
-            const activeBtn = document.getElementById(`btn-lang-${mode}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('text-slate-600');
-                activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm', 'font-semibold');
+            if (currentQuizSet < 4) {
+                switchQuizSet(currentQuizSet + 1);
+            } else {
+                switchQuizSet(1);
             }
-            renderQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderQuiz() {
@@ -382,383 +835,19 @@
             if (!container) return;
             container.innerHTML = '';
 
-            const setData = quizSetsData[currentQuizSet];
-            if (!setData || !setData.questions) return;
+            const activeSetData = quizSetsData[currentQuizSet];
+            if (!activeSetData || !activeSetData.questions) return;
 
-            const questions = setData.questions;
-
-            questions.forEach((q, idx) => {
+            activeSetData.questions.forEach((q, idx) => {
                 const qBox = document.createElement('div');
                 qBox.className = "bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4";
-                
-                let optionsHTML = q.options.map((optEN, optIdx) => {
-                    const optTH = (q.optionsTH && q.optionsTH[optIdx]) ? q.optionsTH[optIdx] : '';
-                    const letter = String.fromCharCode(65 + optIdx);
-                    
-                    let contentHTML = '';
-                    if (quizLangMode === 'bilingual') {
-                        contentHTML = `
-                            <div class="space-y-1 w-full">
-                                <div class="font-semibold text-slate-900 leading-snug flex items-start gap-2">
-                                    <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-indigo-100 text-indigo-800 font-bold text-[11px] shrink-0">${letter}</span>
-                                    <span>${optEN}</span>
-                                </div>
-                                <div class="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-150 pl-3 ml-7 leading-relaxed">
-                                    <span class="font-bold text-indigo-700 mr-1 text-[11px]">แปลไทย:</span> ${optTH}
-                                </div>
-                            </div>
-                        `;
-                    } else if (quizLangMode === 'en') {
-                        contentHTML = `
-                            <div class="font-medium text-slate-900 leading-snug flex items-start gap-2">
-                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-indigo-100 text-indigo-800 font-bold text-[11px] shrink-0">${letter}</span>
-                                <span>${optEN}</span>
-                            </div>
-                        `;
-                    } else {
-                        contentHTML = `
-                            <div class="font-medium text-slate-900 leading-snug flex items-start gap-2">
-                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-indigo-100 text-indigo-800 font-bold text-[11px] shrink-0">${letter}</span>
-                                <span>${optTH}</span>
-                            </div>
-                        `;
-                    }
 
-                    return `
-                        <div onclick="selectQuizAnswer(${q.id}, ${optIdx})" class="quiz-option-${q.id} flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 hover:bg-slate-50 cursor-pointer transition text-xs text-slate-800 shadow-sm">
-                            <input type="radio" id="q-${q.id}-opt-${optIdx}" name="quiz-${q.id}" value="${optIdx}" class="mt-1 text-indigo-600 focus:ring-indigo-500 shrink-0 pointer-events-none">
-                            ${contentHTML}
-                        </div>
-                    `;
-                }).join('');
-
-                let questionHeaderHTML = '';
-                if (quizLangMode === 'bilingual') {
-                    questionHeaderHTML = `
-                        <div class="space-y-2">
-                            <p class="font-bold text-slate-900 text-sm leading-relaxed">${q.questionEN}</p>
-                            <p class="text-xs text-indigo-800 bg-indigo-50/70 p-3 rounded-xl border border-indigo-100 font-medium leading-relaxed">
-                                <span class="font-bold text-indigo-900 block mb-0.5">แปลไทย:</span> ${q.questionTH}
-                            </p>
-                        </div>
-                    `;
-                } else if (quizLangMode === 'en') {
-                    questionHeaderHTML = `
-                        <p class="font-bold text-slate-900 text-sm leading-relaxed">${q.questionEN}</p>
-                    `;
-                } else {
-                    questionHeaderHTML = `
-                        <p class="font-bold text-slate-900 text-sm leading-relaxed">${q.questionTH}</p>
-                    `;
-                }
-
-                qBox.innerHTML = `
-                    <div class="flex items-start justify-between">
-                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">ข้อที่ ${idx + 1} / ${questions.length}</span>
-                        <span id="quiz-status-${q.id}" class="text-xs font-semibold text-slate-400">ยังไม่ได้ตอบ</span>
-                    </div>
-
-                    ${questionHeaderHTML}
-
-                    <div class="space-y-2.5 pt-2">
-                        ${optionsHTML}
-                    </div>
-
-                    <div id="quiz-exp-${q.id}" class="hidden p-4 rounded-xl text-xs space-y-2 mt-3"></div>
-                `;
-                container.appendChild(qBox);
-
-                if (userQuizAnswers[currentQuizSet] && userQuizAnswers[currentQuizSet][q.id] !== undefined) {
-                    restoreQuizSelection(q.id, userQuizAnswers[currentQuizSet][q.id]);
-                }
-            });
-
-            updateQuizScoreBadge();
-        }
-
-        function restoreQuizSelection(questionId, selectedIdx) {
-            const radio = document.getElementById(`q-${questionId}-opt-${selectedIdx}`);
-            if (radio) radio.checked = true;
-            selectQuizAnswer(questionId, selectedIdx, false);
-        }
-
-        function selectQuizAnswer(questionId, selectedIdx, updateBadge = true) {
-            try {
-                if (!userQuizAnswers[currentQuizSet]) {
-                    userQuizAnswers[currentQuizSet] = {};
-                }
-                userQuizAnswers[currentQuizSet][questionId] = selectedIdx;
-
-                const radio = document.getElementById(`q-${questionId}-opt-${selectedIdx}`);
-                if (radio) radio.checked = true;
-
-                const setData = quizSetsData[currentQuizSet];
-                if (!setData) return;
-                const q = setData.questions.find(item => item.id === questionId);
-                if (!q) return;
-
-                const isCorrect = (selectedIdx === q.correctIndex);
-                const expBox = document.getElementById(`quiz-exp-${questionId}`);
-                const statusTag = document.getElementById(`quiz-status-${questionId}`);
-
-                const optionBoxes = document.querySelectorAll(`.quiz-option-${questionId}`);
-                optionBoxes.forEach((box, idx) => {
-                    box.classList.remove('border-emerald-500', 'bg-emerald-50/70', 'border-rose-400', 'bg-rose-50/70', 'border-indigo-400');
-                    if (idx === q.correctIndex) {
-                        box.classList.add('border-emerald-500', 'bg-emerald-50/70');
-                    } else if (idx === selectedIdx && !isCorrect) {
-                        box.classList.add('border-rose-400', 'bg-rose-50/70');
-                    }
-                });
-
-                if (expBox) expBox.classList.remove('hidden');
-
-                const selectedExplanation = (q.optionExplanationsTH && q.optionExplanationsTH[selectedIdx]) ? q.optionExplanationsTH[selectedIdx] : "";
-                const conceptSummary = q.conceptSummaryTH || "";
-
-                if (isCorrect) {
-                    if (statusTag) {
-                        statusTag.innerText = "✓ ถูกต้อง (Correct)";
-                        statusTag.className = "text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg";
-                    }
-                    if (expBox) {
-                        expBox.className = "p-4 rounded-xl text-xs bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-2 mt-3 shadow-sm";
-                        expBox.innerHTML = `
-                            <div class="flex items-center gap-1.5 font-bold text-emerald-800 text-sm">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>เก่งมาก! ตอบถูกต้อง (ข้อ ${String.fromCharCode(65 + q.correctIndex)})</span>
-                            </div>
-                            <div class="bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-emerald-900">${conceptSummary}</div>
-                            <p class="text-slate-700 leading-relaxed"><strong class="text-emerald-900">การวิเคราะห์ข้อนี้:</strong> ${selectedExplanation}</p>
-                        `;
-                    }
-                } else {
-                    if (statusTag) {
-                        statusTag.innerText = "✕ ยังไม่ถูกต้อง (Incorrect)";
-                        statusTag.className = "text-xs font-bold text-rose-700 bg-rose-100 px-2.5 py-1 rounded-lg";
-                    }
-                    if (expBox) {
-                        expBox.className = "p-4 rounded-xl text-xs bg-rose-50 border border-rose-200 text-rose-950 space-y-2.5 mt-3 shadow-sm";
-                        expBox.innerHTML = `
-                            <div class="flex items-center gap-1.5 font-bold text-rose-800 text-sm border-b border-rose-200 pb-1.5">
-                                <i class="fa-solid fa-circle-xmark text-base"></i>
-                                <span>ยังไม่ถูกต้อง! เฉลยข้อที่ถูกต้องคือ ข้อ ${String.fromCharCode(65 + q.correctIndex)}</span>
-                            </div>
-
-                            <div class="bg-white/90 p-3 rounded-lg border border-rose-200 text-slate-800 space-y-1">
-                                <span class="font-bold text-rose-900 block text-[11px]">⚠️ วิเคราะห์ตัวเลือกที่เลือก (ข้อ ${String.fromCharCode(65 + selectedIdx)}):</span>
-                                <p class="text-slate-700 leading-relaxed">${selectedExplanation}</p>
-                            </div>
-
-                            <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200 text-slate-800 space-y-1">
-                                <span class="font-bold text-emerald-900 block text-[11px]">✓ วิเคราะห์เฉลยที่ถูกต้อง (ข้อ ${String.fromCharCode(65 + q.correctIndex)}):</span>
-                                <p class="text-slate-700 leading-relaxed">${(q.optionExplanationsTH && q.optionExplanationsTH[q.correctIndex]) ? q.optionExplanationsTH[q.correctIndex] : ''}</p>
-                            </div>
-
-                            <div class="bg-white/60 p-2.5 rounded-lg border border-rose-200 text-slate-700">
-                                ${conceptSummary}
-                            </div>
-                        `;
-                    }
-                }
-
-                if (updateBadge) {
-                    updateQuizScoreBadge();
-                }
-            } catch(e) { console.error("Error selecting answer:", e); }
-        }
-
-        // --- SUMMARY SECTION RENDERING ---
-        function renderSummaryCards(dataList) {
-            const container = document.getElementById('summary-cards-container');
-            if (!container) return;
-            container.innerHTML = '';
-
-            dataList.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4";
-                
-                let highlightsHTML = item.highlights.map(h => `<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>${h}</span></li>`).join('');
-
-                card.innerHTML = `
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
-                                <i class="fa-solid ${item.icon}"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">${item.week}</span>
-                                <h3 class="font-bold text-slate-900 text-base leading-snug">${item.titleEN}</h3>
-                                <p class="text-xs font-semibold text-indigo-600">${item.titleTH}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2 text-xs border-t border-slate-100 pt-3">
-                        <p class="text-slate-700 leading-relaxed"><strong class="text-slate-900">EN:</strong> ${item.descEN}</p>
-                        <p class="text-slate-600 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-100"><strong class="text-indigo-700">แปลไทย:</strong> ${item.descTH}</p>
-                    </div>
-
-                    <ul class="space-y-1 bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
-                        ${highlightsHTML}
-                    </ul>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function filterSummary(category) {
-            document.querySelectorAll('.summary-filter-btn').forEach(btn => {
-                btn.classList.remove('bg-indigo-600', 'text-white');
-                btn.classList.add('bg-slate-200', 'text-slate-700');
-            });
-            if (event && event.target) {
-                event.target.classList.remove('bg-slate-200', 'text-slate-700');
-                event.target.classList.add('bg-indigo-600', 'text-white');
-            }
-
-            if (category === 'all') {
-                renderSummaryCards(summaryData);
-            } else {
-                const filtered = summaryData.filter(item => item.category === category);
-                renderSummaryCards(filtered);
-            }
-        }
-
-        // --- FLASHCARDS RENDERING & LOGIC ---
-        function renderFlashcard() {
-            const card = flashcardsData[currentCardIndex];
-            if (!card) return;
-
-            document.getElementById('card-tag').innerText = card.tag;
-            document.getElementById('card-front-title').innerText = card.frontEN;
-            document.getElementById('card-front-th').innerText = card.frontTH;
-            document.getElementById('card-hint').innerText = `💡 Hint: ${card.hint}`;
-
-            document.getElementById('card-back-text-en').innerText = card.backEN;
-            document.getElementById('card-back-text-th').innerText = card.backTH;
-
-            isCardFlipped = false;
-            document.getElementById('card-inner').classList.remove('is-flipped');
-
-            document.getElementById('card-progress-text').innerText = `การ์ดใบที่ ${currentCardIndex + 1} / ${flashcardsData.length}`;
-            const pct = ((currentCardIndex + 1) / flashcardsData.length) * 100;
-            document.getElementById('card-progress-bar').style.width = `${pct}%`;
-        }
-
-        function flipCard() {
-            isCardFlipped = !isCardFlipped;
-            const inner = document.getElementById('card-inner');
-            if (isCardFlipped) {
-                inner.classList.add('is-flipped');
-            } else {
-                inner.classList.remove('is-flipped');
-            }
-        }
-
-        function nextCard() {
-            if (currentCardIndex < flashcardsData.length - 1) {
-                currentCardIndex++;
-                renderFlashcard();
-            }
-        }
-
-        function prevCard() {
-            if (currentCardIndex > 0) {
-                currentCardIndex--;
-                renderFlashcard();
-            }
-        }
-
-        function markCard(known) {
-            if (known) {
-                cardScore++;
-                document.getElementById('card-score-text').innerText = `จำได้แล้ว: ${cardScore} ใบ`;
-            }
-            nextCard();
-        }
-
-        function shuffleFlashcards() {
-            flashcardsData.sort(() => Math.random() - 0.5);
-            currentCardIndex = 0;
-            cardScore = 0;
-            document.getElementById('card-score-text').innerText = `จำได้แล้ว: 0 ใบ`;
-            renderFlashcard();
-        }
-
-        function resetFlashcards() {
-            currentCardIndex = 0;
-            cardScore = 0;
-            document.getElementById('card-score-text').innerText = `จำได้แล้ว: 0 ใบ`;
-            renderFlashcard();
-        }
-
-        // --- MULTI-SET QUIZ RENDER & LOGIC ---
-        function switchQuizSet(setId) {
-            currentQuizSet = setId;
-
-            document.querySelectorAll('.quiz-set-btn').forEach(btn => {
-                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm', 'font-bold');
-                btn.classList.add('bg-slate-100', 'text-slate-700', 'font-medium');
-            });
-            const activeBtn = document.getElementById(`set-btn-${setId}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-slate-100', 'text-slate-700', 'font-medium');
-                activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm', 'font-bold');
-            }
-
-            const setTitleDisp = document.getElementById('quiz-set-title-display');
-            if (setTitleDisp && quizSetsData[setId]) {
-                setTitleDisp.innerText = `กำลังทำข้อสอบ: ${quizSetsData[setId].title}`;
-            }
-
-            updateQuizScoreBadge();
-            renderQuiz();
-        }
-
-        function nextQuizSet() {
-            if (currentQuizSet === 'set1') switchQuizSet('set2');
-            else if (currentQuizSet === 'set2') switchQuizSet('set3');
-            else if (currentQuizSet === 'set3') switchQuizSet('set4');
-            else switchQuizSet('set1');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function setQuizLangMode(mode) {
-            quizLangMode = mode;
-            document.querySelectorAll('.quiz-lang-btn').forEach(btn => {
-                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm', 'font-semibold');
-                btn.classList.add('text-slate-600');
-            });
-            const activeBtn = document.getElementById(`btn-lang-${mode}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('text-slate-600');
-                activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm', 'font-semibold');
-            }
-            renderQuiz();
-        }
-
-        function renderQuiz() {
-            const container = document.getElementById('quiz-container');
-            if (!container) return;
-            container.innerHTML = '';
-
-            const setData = quizSetsData[currentQuizSet];
-            if (!setData || !setData.questions) return;
-
-            const questions = setData.questions;
-
-            questions.forEach((q, idx) => {
-                const qBox = document.createElement('div');
-                qBox.className = "bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4";
-                
                 let optionsHTML = q.options.map((optEN, optIdx) => {
                     const optTH = q.optionsTH[optIdx];
                     const letter = String.fromCharCode(65 + optIdx);
-                    
-                    let contentHTML = '';
-                    if (quizLangMode === 'bilingual') {
-                        contentHTML = `
+                    return `
+                        <label onclick="selectQuizAnswer(${q.id}, ${optIdx})" class="quiz-option-${q.id} flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 hover:bg-slate-50 cursor-pointer transition text-xs text-slate-800 shadow-sm">
+                            <input type="radio" name="quiz-${q.id}" value="${optIdx}" class="mt-1 text-indigo-600 focus:ring-indigo-500 shrink-0">
                             <div class="space-y-1 w-full">
                                 <div class="font-semibold text-slate-900 leading-snug flex items-start gap-2">
                                     <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-indigo-100 text-indigo-800 font-bold text-[11px] shrink-0">${letter}</span>
@@ -768,113 +857,62 @@
                                     <span class="font-bold text-indigo-700 mr-1 text-[11px]">แปลไทย:</span> ${optTH}
                                 </div>
                             </div>
-                        `;
-                    } else if (quizLangMode === 'en') {
-                        contentHTML = `
-                            <div class="font-medium text-slate-900 leading-snug flex items-start gap-2">
-                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-indigo-100 text-indigo-800 font-bold text-[11px] shrink-0">${letter}</span>
-                                <span>${optEN}</span>
-                            </div>
-                        `;
-                    } else {
-                        contentHTML = `
-                            <div class="font-medium text-slate-900 leading-snug flex items-start gap-2">
-                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-indigo-100 text-indigo-800 font-bold text-[11px] shrink-0">${letter}</span>
-                                <span>${optTH}</span>
-                            </div>
-                        `;
-                    }
-
-                    return `
-                        <div onclick="selectQuizAnswer(${q.id}, ${optIdx})" class="quiz-option-${q.id} flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 hover:bg-slate-50 cursor-pointer transition text-xs text-slate-800 shadow-sm">
-                            <input type="radio" id="q-${q.id}-opt-${optIdx}" name="quiz-${q.id}" value="${optIdx}" class="mt-1 text-indigo-600 focus:ring-indigo-500 shrink-0 pointer-events-none">
-                            ${contentHTML}
-                        </div>
+                        </label>
                     `;
                 }).join('');
 
-                let questionHeaderHTML = '';
-                if (quizLangMode === 'bilingual') {
-                    questionHeaderHTML = `
-                        <div class="space-y-2">
-                            <p class="font-bold text-slate-900 text-sm leading-relaxed">${q.questionEN}</p>
-                            <p class="text-xs text-indigo-800 bg-indigo-50/70 p-3 rounded-xl border border-indigo-100 font-medium leading-relaxed">
-                                <span class="font-bold text-indigo-900 block mb-0.5">แปลไทย:</span> ${q.questionTH}
-                            </p>
-                        </div>
-                    `;
-                } else if (quizLangMode === 'en') {
-                    questionHeaderHTML = `
-                        <p class="font-bold text-slate-900 text-sm leading-relaxed">${q.questionEN}</p>
-                    `;
-                } else {
-                    questionHeaderHTML = `
-                        <p class="font-bold text-slate-900 text-sm leading-relaxed">${q.questionTH}</p>
-                    `;
-                }
-
                 qBox.innerHTML = `
                     <div class="flex items-start justify-between">
-                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">ข้อที่ ${idx + 1} / ${questions.length}</span>
+                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">ข้อที่ ${idx + 1} / ${activeSetData.questions.length}</span>
                         <span id="quiz-status-${q.id}" class="text-xs font-semibold text-slate-400">ยังไม่ได้ตอบ</span>
                     </div>
-
-                    ${questionHeaderHTML}
-
-                    <div class="space-y-2.5 pt-2">
-                        ${optionsHTML}
+                    <div class="space-y-2">
+                        <p class="font-bold text-slate-900 text-sm leading-relaxed">${q.questionEN}</p>
+                        <p class="text-xs text-indigo-800 bg-indigo-50/70 p-3 rounded-xl border border-indigo-100 font-medium leading-relaxed">
+                            <span class="font-bold text-indigo-900 block mb-0.5">แปลไทย:</span> ${q.questionTH}
+                        </p>
                     </div>
-
+                    <div class="space-y-2.5 pt-2">${optionsHTML}</div>
                     <div id="quiz-exp-${q.id}" class="hidden p-4 rounded-xl text-xs space-y-2 mt-3"></div>
                 `;
                 container.appendChild(qBox);
 
-                if (userQuizAnswers[currentQuizSet] && userQuizAnswers[currentQuizSet][q.id] !== undefined) {
-                    restoreQuizSelection(q.id, userQuizAnswers[currentQuizSet][q.id]);
+                const setAnswers = userSetAnswers[currentQuizSet] || {};
+                if (setAnswers[q.id] !== undefined) {
+                    restoreQuizSelection(q.id, setAnswers[q.id]);
                 }
             });
-
-            updateQuizScoreBadge();
         }
 
         function restoreQuizSelection(questionId, selectedIdx) {
-            const radio = document.getElementById(`q-${questionId}-opt-${selectedIdx}`);
+            const radio = document.querySelector(`input[name="quiz-${questionId}"][value="${selectedIdx}"]`);
             if (radio) radio.checked = true;
             selectQuizAnswer(questionId, selectedIdx, false);
         }
 
-        function selectQuizAnswer(questionId, selectedIdx, updateBadge = true) {
-            if (!userQuizAnswers[currentQuizSet]) {
-                userQuizAnswers[currentQuizSet] = {};
-            }
-            userQuizAnswers[currentQuizSet][questionId] = selectedIdx;
+        function selectQuizAnswer(questionId, selectedIdx, updateScore = true) {
+            if (!userSetAnswers[currentQuizSet]) userSetAnswers[currentQuizSet] = {};
+            userSetAnswers[currentQuizSet][questionId] = selectedIdx;
 
-            const radio = document.getElementById(`q-${questionId}-opt-${selectedIdx}`);
-            if (radio) radio.checked = true;
-
-            const setData = quizSetsData[currentQuizSet];
-            if (!setData) return;
-            const q = setData.questions.find(item => item.id === questionId);
+            const activeSetData = quizSetsData[currentQuizSet];
+            const q = activeSetData.questions.find(item => item.id === questionId);
             if (!q) return;
 
-            const isCorrect = (selectedIdx === q.correctIndex);
+            const isCorrect = selectedIdx === q.correctIndex;
             const expBox = document.getElementById(`quiz-exp-${questionId}`);
             const statusTag = document.getElementById(`quiz-status-${questionId}`);
 
-            const optionBoxes = document.querySelectorAll(`.quiz-option-${questionId}`);
-            optionBoxes.forEach((box, idx) => {
-                box.classList.remove('border-emerald-500', 'bg-emerald-50/70', 'border-rose-400', 'bg-rose-50/70', 'border-indigo-400');
+            const optionLabels = document.querySelectorAll(`.quiz-option-${questionId}`);
+            optionLabels.forEach((label, idx) => {
+                label.classList.remove('border-emerald-500', 'bg-emerald-50/70', 'border-rose-400', 'bg-rose-50/70');
                 if (idx === q.correctIndex) {
-                    box.classList.add('border-emerald-500', 'bg-emerald-50/70');
+                    label.classList.add('border-emerald-500', 'bg-emerald-50/70');
                 } else if (idx === selectedIdx && !isCorrect) {
-                    box.classList.add('border-rose-400', 'bg-rose-50/70');
+                    label.classList.add('border-rose-400', 'bg-rose-50/70');
                 }
             });
 
             if (expBox) expBox.classList.remove('hidden');
-
-            const selectedExplanation = q.optionExplanationsTH[selectedIdx] || "";
-            const conceptSummary = q.conceptSummaryTH || "";
 
             if (isCorrect) {
                 if (statusTag) {
@@ -886,10 +924,13 @@
                     expBox.innerHTML = `
                         <div class="flex items-center gap-1.5 font-bold text-emerald-800 text-sm">
                             <i class="fa-solid fa-circle-check"></i>
-                            <span>เก่งมาก! ตอบถูกต้อง (ข้อ ${String.fromCharCode(65 + q.correctIndex)})</span>
+                            <span>ยอดเยี่ยม! ตอบถูกต้อง (${String.fromCharCode(65 + q.correctIndex)})</span>
                         </div>
-                        <div class="bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-emerald-900">${conceptSummary}</div>
-                        <p class="text-slate-700 leading-relaxed"><strong class="text-emerald-900">การวิเคราะห์ข้อนี้:</strong> ${selectedExplanation}</p>
+                        <div class="bg-white/80 p-2.5 rounded-lg border border-emerald-100 text-slate-700">
+                            <strong class="text-emerald-900 block mb-0.5">📌 สรุปแนวคิดหลัก (Core Concept):</strong>
+                            ${q.conceptSummary}
+                        </div>
+                        <p class="text-slate-700 leading-relaxed"><strong class="text-emerald-900">เหตุผลที่ถูกต้อง:</strong> ${q.correctExplanation}</p>
                     `;
                 }
             } else {
@@ -897,60 +938,61 @@
                     statusTag.innerText = "✕ ยังไม่ถูกต้อง (Incorrect)";
                     statusTag.className = "text-xs font-bold text-rose-700 bg-rose-100 px-2.5 py-1 rounded-lg";
                 }
+                const wrongReason = q.wrongExplanations[selectedIdx] || "ตัวเลือกนี้ยังมีจุดที่ไม่ตรงกับสถานการณ์ในโจทย์";
                 if (expBox) {
                     expBox.className = "p-4 rounded-xl text-xs bg-rose-50 border border-rose-200 text-rose-950 space-y-2.5 mt-3 shadow-sm";
                     expBox.innerHTML = `
-                        <div class="flex items-center gap-1.5 font-bold text-rose-800 text-sm border-b border-rose-200 pb-1.5">
-                            <i class="fa-solid fa-circle-xmark text-base"></i>
-                            <span>ยังไม่ถูกต้อง! เฉลยข้อที่ถูกต้องคือ ข้อ ${String.fromCharCode(65 + q.correctIndex)}</span>
+                        <div class="flex items-center gap-1.5 font-bold text-rose-800 text-sm">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            <span>ยังไม่ถูกต้อง! (เฉลยข้อที่ถูกต้องคือ: ${String.fromCharCode(65 + q.correctIndex)})</span>
                         </div>
-
-                        <div class="bg-white/90 p-3 rounded-lg border border-rose-200 text-slate-800 space-y-1">
-                            <span class="font-bold text-rose-900 block text-[11px]">⚠️ วิเคราะห์ตัวเลือกที่เลือก (ข้อ ${String.fromCharCode(65 + selectedIdx)}):</span>
-                            <p class="text-slate-700 leading-relaxed">${selectedExplanation}</p>
+                        <div class="bg-white/90 p-3 rounded-xl border border-rose-200 text-slate-800 space-y-1.5">
+                            <div class="font-bold text-rose-900 flex items-center gap-1 text-xs">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <span>ทำไมถึงเลือกช้อยส์ (${String.fromCharCode(65 + selectedIdx)}) ผิด?</span>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed">${wrongReason}</p>
                         </div>
-
-                        <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200 text-slate-800 space-y-1">
-                            <span class="font-bold text-emerald-900 block text-[11px]">✓ วิเคราะห์เฉลยที่ถูกต้อง (ข้อ ${String.fromCharCode(65 + q.correctIndex)}):</span>
-                            <p class="text-slate-700 leading-relaxed">${q.optionExplanationsTH[q.correctIndex]}</p>
-                        </div>
-
-                        <div class="bg-white/60 p-2.5 rounded-lg border border-rose-200 text-slate-700">
-                            ${conceptSummary}
+                        <div class="bg-emerald-50/80 p-3 rounded-xl border border-emerald-200 text-slate-800 space-y-1">
+                            <div class="font-bold text-emerald-900 flex items-center gap-1 text-xs">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                <span>สรุปแนวคิดหลัก & เฉลยที่ถูกต้อง:</span>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed"><strong>${q.conceptSummary}</strong></p>
+                            <p class="text-slate-700 leading-relaxed mt-1">${q.correctExplanation}</p>
                         </div>
                     `;
                 }
             }
 
-            if (updateBadge) {
-                updateQuizScoreBadge();
-            }
+            if (updateScore) updateQuizScoreBadge();
         }
 
         function updateQuizScoreBadge() {
-            const setData = quizSetsData[currentQuizSet];
-            if (!setData) return;
+            const activeSetData = quizSetsData[currentQuizSet];
+            if (!activeSetData) return;
+            const setAnswers = userSetAnswers[currentQuizSet] || {};
             let correctCount = 0;
-            const userSetAns = userQuizAnswers[currentQuizSet] || {};
 
-            setData.questions.forEach(q => {
-                if (userSetAns[q.id] === q.correctIndex) {
+            activeSetData.questions.forEach(q => {
+                if (setAnswers[q.id] === q.correctIndex) {
                     correctCount++;
                 }
             });
 
             const badge = document.getElementById('quiz-score-badge');
             if (badge) {
-                badge.innerText = `คะแนนชุดนี้: ${correctCount} / ${setData.questions.length}`;
+                badge.innerText = `คะแนนชุดนี้: ${correctCount} / ${activeSetData.questions.length}`;
             }
         }
 
-        function restartQuiz() {
-            userQuizAnswers[currentQuizSet] = {};
+        function restartCurrentQuizSet() {
+            userSetAnswers[currentQuizSet] = {};
+            updateQuizScoreBadge();
             renderQuiz();
         }
 
-        // --- FINANCIAL CALCULATOR LOGIC ---
+        // --- CALCULATOR LOGIC ---
         function calculateBusinessMath() {
             const P = parseFloat(document.getElementById('calc-p').value) || 0;
             const VC = parseFloat(document.getElementById('calc-vc').value) || 0;
@@ -981,7 +1023,7 @@
             document.getElementById('out-som').innerText = `${SOM.toLocaleString()} บาท`;
         }
 
-        // --- QUICK SEARCH ---
+        // --- SEARCH LOGIC ---
         function handleQuickSearch(query) {
             if (!query.trim()) return;
             switchTab('summary');
