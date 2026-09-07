@@ -280,7 +280,7 @@
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-pen-to-square text-indigo-600"></i> คลังข้อสอบวิเคราะห์สถานการณ์ (10 ข้อสอบจริง)
+                        <i class="fa-solid fa-pen-to-square text-indigo-600"></i> คลังข้อสอบวิเคราะห์สถานการณ์ (20 ข้อสอบจริง)
                     </h2>
                     <p class="text-xs text-slate-500 mt-1">โจทย์และช้อยส์แสดงทั้ง <strong>ภาษาอังกฤษต้นฉบับ + คำแปลภาษาไทย</strong> พร้อมเฉลยละเอียด</p>
                 </div>
@@ -301,7 +301,7 @@
                     </div>
 
                     <span id="quiz-score-badge" class="px-3 py-1.5 bg-indigo-50 border border-indigo-200 text-indigo-700 font-semibold rounded-xl text-xs">
-                        คะแนน: 0 / 10
+                        คะแนน: 0 / 20
                     </span>
                     <button onclick="restartQuiz()" class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-xl text-xs font-medium hover:bg-slate-200 transition">
                         <i class="fa-solid fa-arrows-rotate mr-1"></i> ทำใหม่
@@ -966,6 +966,196 @@
                 ],
                 correctIndex: 0,
                 explanationTH: "กำไรสุทธิ = รายได้รวม - ค่าใช้จ่าย = 350,000 - 110,000 = $240,000 | สูตร ROI = (กำไรสุทธิ / เงินลงทุนรวม) x 100% = (240,000 / 200,000) x 100% = 120%"
+            },
+            {
+                id: 11,
+                questionEN: "A city has dozens of independent coffee shops. Each shop offers slightly distinct coffee blends, unique interior atmospheres, and custom menu items. Entry into this market is relatively easy, and no single shop dominates price-setting. What market structure does this industry represent?",
+                questionTH: "ในเมืองหนึ่งมีร้านกาแฟเอกลักษณ์เฉพาะตัวหลายสิบร้าน แต่ละร้านนำเสนอเมล็ดกาแฟผสมต่างกัน บรรยากาศต่างกัน การเข้าสู่ตลาดทำได้ง่าย และไม่มีร้านใดร้านหนึ่งผูกขาดการตั้งราคา โครงสร้างตลาดนี้คือรูปแบบใด?",
+                options: [
+                    "Monopoly (Single provider with absolute pricing power)",
+                    "Monopolistic Competition (Many sellers + Differentiated products + Low entry barriers)",
+                    "Oligopoly (A few dominant sellers controlling market supply)",
+                    "Perfect Competition (Many sellers + Identical homogeneous products)"
+                ],
+                optionsTH: [
+                    "ตลาดผูกขาดสมบูรณ์ (Monopoly)",
+                    "ตลาดกึ่งผูกขาดกึ่งแข่งขัน (Monopolistic Competition)",
+                    "ตลาดผู้ขายน้อยราย (Oligopoly)",
+                    "ตลาดแข่งขันสมบูรณ์ (Perfect Competition)"
+                ],
+                correctIndex: 1,
+                explanationTH: "ตลาดกึ่งผูกขาดกึ่งแข่งขัน (Monopolistic Competition) มีผู้ขายจำนวนมาก สินค้ามีความแตกต่างกันเล็กน้อย (Product Differentiation) และอุปสรรคการเข้าสู่ตลาดต่ำ ต่างจาก Perfect Competition ที่สินค้าเหมือนกันทุกประการ"
+            },
+            {
+                id: 12,
+                questionEN: "An EV battery manufacturer relies heavily on a specialized chemical supplier that holds exclusive patents for a core raw material. There are no viable chemical alternatives available on the market. In Porter's Five Forces framework, how does this impact the battery manufacturer?",
+                questionTH: "ผู้ผลิตแบตเตอรี่รถยนต์ไฟฟ้าต้องพึ่งพาซัพพลายเออร์เคมีภัณฑ์เฉพาะทางที่มีสิทธิบัตรคุ้มครองวัตถุดิบหลักแต่เพียงผู้เดียว และไม่มีสารทดแทนในตลาด ในกรอบ Five Forces ของ Porter สถานการณ์นี้ส่งผลอย่างไรต่อผู้ผลิตแบตเตอรี่?",
+                options: [
+                    "High bargaining power of buyers, compressing firm profits.",
+                    "High bargaining power of suppliers, compressing firm profitability.",
+                    "High threat of new entrants, lowering entry barriers.",
+                    "High threat of substitute products, increasing price elasticity."
+                ],
+                optionsTH: [
+                    "อำนาจการต่อรองของผู้ซื้อสูง ทำให้กำไรลดลง",
+                    "อำนาจการต่อรองของซัพพลายเออร์สูง กดดันอัตราการทำกำไรของบริษัท",
+                    "ภัยคุกคามจากผู้เล่นรายใหม่สูง ทำให้เกราะป้องกันต่ำลง",
+                    "ภัยคุกคามจากสินค้าทดแทนสูง เพิ่มความยืดหยุ่นของราคา"
+                ],
+                correctIndex: 1,
+                explanationTH: "เมื่อวัตถุดิบมีสิทธิบัตรผูกขาดและไม่มีสารทดแทน ซัพพลายเออร์จะมีอำนาจการต่อรองสูงมาก (High Bargaining Power of Suppliers) สามารถปรับขึ้นราคาหรือกำหนดเงื่อนไขที่กดดันกำไรของผู้ผลิตได้"
+            },
+            {
+                id: 13,
+                questionEN: "A logistics firm adopts an automated warehouse strategy (Strategy) and restructures its reporting lines (Structure) and digital software (Systems). However, the rollout fails because employees lack requisite tech skills (Skills) and resist the new company culture (Shared Values). According to the McKinsey 7S framework, why did this initiative fail?",
+                questionTH: "บริษัทลอจิสติกส์ปรับกลยุทธ์คลังสินค้าอัตโนมัติ (Strategy) ปรับโครงสร้างองค์กร (Structure) และระบบซอฟต์แวร์ (Systems) แต่โครงการล้มเหลวเพราะพนักงานขาดทักษะดิจิทัล (Skills) และต่อต้านวัฒนธรรมใหม่ (Shared Values) ตามกรอบ McKinsey 7S ความล้มเหลวนี้เกิดจากอะไร?",
+                options: [
+                    "The company failed to balance Hard S's with Soft S's to achieve organizational alignment.",
+                    "The company ignored PESTEL macro-environmental legal factors.",
+                    "The company focused too heavily on operational effectiveness rather than cost leadership.",
+                    "The company miscalculated its Break-Even Point across warehouse nodes."
+                ],
+                optionsTH: [
+                    "บริษัทมุ่งเน้นเฉพาะปัจจัยกลุ่ม Hard S's โดยละเลยความสอดคล้องกับปัจจัยกลุ่ม Soft S's",
+                    "บริษัทละเลยปัจจัยทางกฎหมายภายนอกตามกรอบ PESTEL",
+                    "บริษัทเน้น Operational Effectiveness มากกว่า Cost Leadership",
+                    "บริษัทคำนวณจุดคุ้มทุน (BEP) ผิดพลาดในแต่ละคลังสินค้า"
+                ],
+                correctIndex: 0,
+                explanationTH: "กรอบ McKinsey 7S ระบุว่าองค์กรจะประสบความสำเร็จได้ต้องมีความสอดคล้องทั้ง Hard S's (Strategy, Structure, Systems) และ Soft S's (Shared Values, Style, Staff, Skills) หากปรับเปลี่ยนเฉพาะ Hard S's โดยละเลย Soft S's จะเกิดแรงต้านและความล้มเหลว"
+            },
+            {
+                id: 14,
+                questionEN: "A luxury watch manufacturer possesses an extremely strong brand legacy and high customer loyalty (Internal Strength), but faces a surge in cheap counterfeit replicas entering the market (External Threat). Which TOWS matrix strategy leverages its strength to counter this threat?",
+                questionTH: "แบรนด์นาฬิกาหรูมีประวัติศาสตร์แบรนด์ที่แข็งแกร่งและลูกค้าจงรักภักดีสูง (จุดแข็งภายใน) แต่กำลังเผชิญกับสินค้าเลียนแบบราคาถูกทะลักเข้าสู่ตลาด (อุปสรรคภายนอก) กลยุทธ์ TOWS Matrix ใดที่ใช้จุดแข็งเพื่อรับมืออุปสรรคนี้?",
+                options: [
+                    "SO Strategy: Expand into low-cost mass production to capture new buyers.",
+                    "ST Strategy: Utilize brand prestige and digital anti-counterfeit verification to protect market share.",
+                    "WO Strategy: Reduce craftsmanship costs to match replica pricing.",
+                    "WT Strategy: Exit the luxury market segment entirely."
+                ],
+                optionsTH: [
+                    "กลยุทธ์ SO: ขยายไปยังการผลิตสเกลใหญ่ราคาถูกเพื่อจับลูกค้าใหม่",
+                    "กลยุทธ์ ST: ใช้คุณค่าและชื่อเสียงของแบรนด์ร่วมกับระบบตรวจเช็กของแท้ดิจิทัลเพื่อปกป้องส่วนแบ่งตลาด",
+                    "กลยุทธ์ WO: ลดต้นทุนงานฝีมือลงเพื่อให้ตั้งราคาแข่งกับของก๊อปได้",
+                    "กลยุทธ์ WT: ถอนตัวออกจากตลาดสินค้าหรูหราทั้งหมด"
+                ],
+                correctIndex: 1,
+                explanationTH: "การใช้จุดแข็งภายใน (Strength) เพื่อรับมืออุปสรรคภายนอก (Threat) คือกลยุทธ์ ST (Maxi-Mini) โดยนำชื่อเสียงความน่าเชื่อถือของแบรนด์มาสร้างระบบการันตีของแท้เพื่อต่อสู้กับสินค้าเลียนแบบ"
+            },
+            {
+                id: 15,
+                questionEN: "Volvo has consistently designed its vehicles and marketing campaigns around safety technology, ensuring consumers instantly associate the brand with security. Within the STP marketing framework, which phase does this strategic focus directly represent?",
+                questionTH: "ค่ายรถยนต์ Volvo ออกแบบยานยนต์และสื่อสารการตลาดโดยเน้นเรื่องความปลอดภัยมาโดยตลอด จนผู้บริโภจนึกถึงความปลอดภัยทันทีเมื่อได้ยินชื่อแบรนด์ ในกรอบ STP สิ่งนี้คือขั้นตอนใด?",
+                options: [
+                    "Market Segmentation",
+                    "Target Audience Selection",
+                    "Brand Positioning",
+                    "Bottom-Up Market Sizing"
+                ],
+                optionsTH: [
+                    "การแบ่งส่วนตลาด (Market Segmentation)",
+                    "การเลือกกลุ่มเป้าหมาย (Targeting)",
+                    "การวางตำแหน่งแบรนด์ในใจผู้บริโภค (Positioning)",
+                    "การประเมินขนาดตลาดแบบ Bottom-Up"
+                ],
+                correctIndex: 2,
+                explanationTH: "Positioning คือการสร้างภาพจำและการครองพื้นที่ในใจผู้บริโภค (Mindshare) เพื่อให้แบรนด์มีความโดดเด่นและแตกต่างจากคู่แข่งเมื่อผู้บริโภคนึกถึงคุณประโยชน์เฉพาะนั้นๆ"
+            },
+            {
+                id: 16,
+                questionEN: "An ed-tech startup offers specialized coding courses. The total global demand for online coding education is $10 Billion (TAM). Courses tailored for university CS students in Southeast Asia represent $1 Billion (SAM). Based on current sales staff and marketing budget, the startup aims for $20 Million in Year 1. What does the $20 Million represent?",
+                questionTH: "สตาร์ทอัพด้าน EdTech สอนเขียนโปรแกรม มูลค่ารวมตลาดการเรียนเขียนโค้ดทั่วโลกคือ 1 หมื่นล้านเหรียญ (TAM) ส่วนตลาดนักศึกษาสาขาคอมพิวเตอร์ในเอเชียตะวันออกเฉียงใต้คือ 1 พันล้านเหรียญ (SAM) หากสตาร์ทอัพตั้งเป้ายอดขายปีแรกไว้ที่ 20 ล้านเหรียญ ตัวเลข 20 ล้านเหรียญนี้คืออะไร?",
+                options: [
+                    "Total Addressable Market (TAM)",
+                    "Serviceable Addressable Market (SAM)",
+                    "Serviceable Obtainable Market (SOM)",
+                    "Contribution Margin Ratio"
+                ],
+                optionsTH: [
+                    "ตลาดรวมทั้งหมด (TAM)",
+                    "ตลาดที่เข้าถึงได้ตามโมเดล (SAM)",
+                    "ตลาดที่คาดว่าจะคว้าได้จริงในระยะแรก (SOM)",
+                    "อัตรากำไรขอบขั้นต้น"
+                ],
+                correctIndex: 2,
+                explanationTH: "SOM (Serviceable Obtainable Market) คือเป้าหมายยอดขายหรือขนาดตลาดที่บริษัทคาดว่าจะคว้าส่วนแบ่งได้จริงในระยะแรก ภายใต้ข้อจำกัดด้านทรัพยากร ทีมงาน และงบประมาณที่มีอยู่จริง"
+            },
+            {
+                id: 17,
+                questionEN: "In the Business Model Canvas (BMC), a company uses an automated AI chatbot for 24/7 post-purchase support, and uses express courier services to ship physical orders to buyers' doorsteps. Which BMC building blocks do the chatbot and courier service belong to, respectively?",
+                questionTH: "ใน Business Model Canvas (BMC) บริษัทใช้ AI Chatbot ตอบคำถามหลังการขายตลอด 24 ชม. และใช้บริการขนส่งพัสดุด่วนจัดส่งสินค้าถึงบ้านลูกค้า Chatbot และบริการขนส่งจัดอยู่ในช่อง BMC ใดตามลำดับ?",
+                options: [
+                    "Chatbot = Customer Relationships | Courier = Channels",
+                    "Chatbot = Channels | Courier = Key Partners",
+                    "Chatbot = Value Propositions | Courier = Customer Relationships",
+                    "Chatbot = Key Activities | Courier = Revenue Streams"
+                ],
+                optionsTH: [
+                    "Chatbot = ความสัมพันธ์กับลูกค้า (Customer Relationships) | ขนส่ง = ช่องทางจัดส่ง (Channels)",
+                    "Chatbot = ช่องทาง (Channels) | ขนส่ง = พันธมิตรหลัก (Key Partners)",
+                    "Chatbot = คุณค่าที่ส่งมอบ (Value Propositions) | ขนส่ง = ความสัมพันธ์กับลูกค้า (Customer Relationships)",
+                    "Chatbot = กิจกรรมหลัก (Key Activities) | ขนส่ง = กระแสรายได้ (Revenue Streams)"
+                ],
+                correctIndex: 0,
+                explanationTH: "Chatbot สำหรับดูแลและซัพพอร์ตลูกค้าคือ Customer Relationships (การปฏิสัมพันธ์/รักษาลูกค้า) ส่วนบริการขนส่งสินค้าให้ถึงมือลูกค้าคือ Channels (ช่องทางในการส่งมอบสินค้า)"
+            },
+            {
+                id: 18,
+                questionEN: "A manufacturing firm increases its unit selling price (P) from $100 to $120, while its variable cost per unit (VC = $60) and total fixed costs (TFC = $240,000) remain unchanged. How does this price increase affect the firm's Break-Even Point in units (BEP)?",
+                questionTH: "โรงงานผลิตสินค้าปรับขึ้นราคาขายต่อหน่วย (P) จาก $100 เป็น $120 โดยที่ต้นทุนผันแปรต่อหน่วย (VC = $60) และต้นทุนคงที่รวม (TFC = $240,000) เท่าเดิม การปรับขึ้นราคานี้ส่งผลต่อจุดคุ้มทุน (BEP) อย่างไร?",
+                options: [
+                    "BEP increases from 2,400 units to 4,000 units.",
+                    "BEP decreases from 6,000 units to 4,000 units.",
+                    "BEP decreases from 4,000 units to 3,000 units.",
+                    "BEP remains unchanged at 2,400 units."
+                ],
+                optionsTH: [
+                    "จุดคุ้มทุนเพิ่มขึ้นจาก 2,400 ชิ้น เป็น 4,000 ชิ้น",
+                    "จุดคุ้มทุนลดลงจาก 6,000 ชิ้น เหลือ 4,000 ชิ้น",
+                    "จุดคุ้มทุนลดลงจาก 4,000 ชิ้น เหลือ 3,000 ชิ้น",
+                    "จุดคุ้มทุนเท่าเดิมที่ 2,400 ชิ้น"
+                ],
+                correctIndex: 1,
+                explanationTH: "สูตร BEP = TFC / (P - VC) | เดิม: 240,000 / (100 - 60) = 6,000 ชิ้น | ใหม่: 240,000 / (120 - 60) = 4,000 ชิ้น ดังนั้น จุดคุ้มทุนลดลงจาก 6,000 ชิ้น เหลือ 4,000 ชิ้น (คุ้มทุนเร็วขึ้น)"
+            },
+            {
+                id: 19,
+                questionEN: "A boutique brand sells handmade leather bags for 500 THB each. The variable material and labor cost is 200 THB per bag, and fixed workshop rent/utilities total 150,000 THB per month. If the workshop produces and sells 800 bags this month, what is its net profit or loss?",
+                questionTH: "แบรนด์กระเป๋าหนังขายกระเป๋าใบละ 500 บาท ต้นทุนผันแปร (ค่าหนัง+ค่าแรง) 200 บาท/ใบ ค่าเช่าและค่าใช้จ่ายคงที่ 150,000 บาท/เดือน หากเดือนนี้ผลิตและขายได้ 800 ใบ กำไรสุทธิหรือขาดทุนคือเท่าใด?",
+                options: [
+                    "Net Profit of 90,000 THB",
+                    "Net Loss of 30,000 THB",
+                    "Net Profit of 240,000 THB",
+                    "Exactly Break-Even (0 THB Profit)"
+                ],
+                optionsTH: [
+                    "กำไรสุทธิ 90,000 บาท",
+                    "ขาดทุนสุทธิ 30,000 บาท",
+                    "กำไรสุทธิ 240,000 บาท",
+                    "คุ้มทุนพอดี (กำไร 0 บาท)"
+                ],
+                correctIndex: 0,
+                explanationTH: "สูตร Profit = (P x Q) - [(VC x Q) + TFC] = (500 x 800) - [(200 x 800) + 150,000] = 400,000 - [160,000 + 150,000] = 400,000 - 310,000 = +90,000 บาท"
+            },
+            {
+                id: 20,
+                questionEN: "A franchisee invests 500,000 THB to open a new bubble tea shop. In Year 1, the shop generates total revenue of 850,000 THB and incurs total operational costs of 100,000 THB. What is the franchisee's Return on Investment (ROI) for Year 1?",
+                questionTH: "แฟรนไชส์ซีลงทุน 500,000 บาทเพื่อเปิดร้านชานมไข่มุก ในปีแรก ร้านทำรายได้รวม 850,000 บาท และมีค่าใช้จ่ายดำเนินงานรวม 100,000 บาท ผลตอบแทนจากการลงทุน (ROI) สำหรับปีแรกคือเท่าใด?",
+                options: [
+                    "150% ROI yield",
+                    "170% ROI yield",
+                    "70% ROI yield",
+                    "120% ROI yield"
+                ],
+                optionsTH: [
+                    "ผลตอบแทน 150%",
+                    "ผลตอบแทน 170%",
+                    "ผลตอบแทน 70%",
+                    "ผลตอบแทน 120%"
+                ],
+                correctIndex: 0,
+                explanationTH: "กำไรสุทธิ = 850,000 - 100,000 = 750,000 บาท | สูตร ROI = (กำไรสุทธิ / เงินลงทุนรวม) x 100% = (750,000 / 500,000) x 100% = 150%"
             }
         ];
 
