@@ -83,7 +83,7 @@
                     </div>
                     <div>
                         <h1 class="font-bold text-lg leading-tight">INT110 Business Thinking</h1>
-                        <p class="text-xs text-indigo-200">สรุปเนื้อหา + คำแปลไทย + คลังข้อสอบเตรียมสอบ</p>
+                        <p class="text-xs text-indigo-200">สรุปเนื้อหา + แฟลชการ์ด + ข้อสอบใหม่ระบบเฉลยละเอียด</p>
                     </div>
                 </div>
 
@@ -99,7 +99,7 @@
                     </button>
                     <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 text-indigo-200 hover:text-white hover:bg-white/5">
                         <i class="fa-solid fa-pen-to-square"></i>
-                        <span>คลังข้อสอบ (2 ภาษา)</span>
+                        <span>คลังข้อสอบใหม่ (พร้อมเหตุผลฉบับเจาะลึก)</span>
                     </button>
                     <button onclick="switchTab('calc')" id="nav-calc" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 text-indigo-200 hover:text-white hover:bg-white/5">
                         <i class="fa-solid fa-calculator"></i>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="flex gap-2">
                     <button onclick="switchTab('quiz')" class="bg-white text-indigo-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-indigo-50 transition shadow-lg flex items-center gap-2">
-                        <i class="fa-solid fa-play text-xs"></i> ทำแบบทดสอบ
+                        <i class="fa-solid fa-play text-xs"></i> ทำแบบทดสอบใหม่
                     </button>
                 </div>
             </div>
@@ -274,15 +274,15 @@
         </section>
 
 
-        <!-- TAB 3: คลังข้อสอบ (PRACTICE QUIZ SECTION) -->
+        <!-- TAB 3: คลังข้อสอบ (NEW PRACTICE QUIZ SECTION) -->
         <section id="tab-quiz" class="tab-content hidden space-y-6">
             <!-- Quiz Header Banner -->
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-pen-to-square text-indigo-600"></i> คลังข้อสอบวิเคราะห์สถานการณ์ (20 ข้อสอบจริง)
+                        <i class="fa-solid fa-pen-to-square text-indigo-600"></i> คลังข้อสอบใหม่แบบวิเคราะห์การตอบผิด (15 Scenario Questions)
                     </h2>
-                    <p class="text-xs text-slate-500 mt-1">โจทย์และช้อยส์แสดงทั้ง <strong>ภาษาอังกฤษต้นฉบับ + คำแปลภาษาไทย</strong> พร้อมเฉลยละเอียด</p>
+                    <p class="text-xs text-slate-500 mt-1">พร้อมระบบวิเคราะห์ทันทีเมื่อตอบผิด: สรุป概念เรื่องนั้น + อธิบายว่าทำไมตัวเลือกที่คุณกดจึงเข้าใจผิด</p>
                 </div>
 
                 <!-- Quiz Options Controls -->
@@ -301,7 +301,7 @@
                     </div>
 
                     <span id="quiz-score-badge" class="px-3 py-1.5 bg-indigo-50 border border-indigo-200 text-indigo-700 font-semibold rounded-xl text-xs">
-                        คะแนน: 0 / 20
+                        คะแนน: 0 / 15
                     </span>
                     <button onclick="restartQuiz()" class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-xl text-xs font-medium hover:bg-slate-200 transition">
                         <i class="fa-solid fa-arrows-rotate mr-1"></i> ทำใหม่
@@ -441,7 +441,7 @@
     <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
             <p class="font-medium text-slate-300">INT110 Business Thinking Complete Study Companion & Exam Readiness Platform</p>
-            <p class="text-slate-500">สรุปเนื้อหา + แฟลชการ์ด 25 ใบ + คลังข้อสอบช้อยส์สองภาษา (EN/TH) | KMUTT SIT</p>
+            <p class="text-slate-500">สรุปเนื้อหา + แฟลชการ์ด 25 ใบ + คลังข้อสอบใหม่พร้อมระบบวิเคราะห์ความผิดพลาด | KMUTT SIT</p>
         </div>
     </footer>
 
@@ -775,387 +775,290 @@
             }
         ];
 
-        // --- QUIZ QUESTIONS DATASET (10 Detailed Scenario Questions) ---
+        // --- BRAND NEW QUIZ DATASET (15 Scenario Questions with Mistake Breakdown) ---
         const quizData = [
             {
-                id: 1,
-                questionEN: "Company A adopts Total Quality Management, purchases automated machinery, and reduces production defects by 15%, matching sector best practices. According to Michael Porter's strategy framework, why is Company A NOT executing a competitive strategy?",
-                questionTH: "บริษัท A นำระบบ TQM มาใช้ ซื้อเครื่องจักรอัตโนมัติ และลดของเสียในการผลิตลง 15% ตามมาตรฐานที่ดีที่สุดในอุตสาหกรรม ตามกรอบคิดของ Michael Porter เหตุใดบริษัท A จึงยังไม่ได้ดำเนินกลยุทธ์การแข่งขัน?",
+                id: 101,
+                questionEN: "A boutique hotel tries to cut room rates to compete with budget motels, while simultaneously offering 5-star personal butler service and fine dining. As a result, operations become chaotic and profits plummet. According to Michael Porter, what critical strategic element is missing?",
+                questionTH: "โรงแรมบูทีคแห่งหนึ่งพยายามลดราคาห้องพักเพื่อแข่งกับโรงแรมประหยัด แต่ขณะเดียวกันก็ยังจัดบริการพ่อบ้านส่วนตัวระดับ 5 ดาวและอาหารหรูหรา ผลลัพธ์คือการดำเนินงานสับสนและกำไรตกต่ำ ตามแนวคิด Michael Porter สิ่งสำคัญทางยุทธศาสตร์ใดที่หายไป?",
                 options: [
-                    "It is operating in an oligopolistic market structure where supply-side economies of scale prevent competitive advantage.",
-                    "It is improving operational effectiveness along the productivity frontier rather than establishing a unique strategic position.",
-                    "It failed to protect its intellectual property through customer switching costs.",
-                    "It prioritized differentiation over overall cost leadership in its generic strategy."
+                    "Operational Effectiveness (OE) optimization",
+                    "Strategic Trade-offs (Choosing what NOT to do)",
+                    "Supply-side Economies of Scale",
+                    "Backward Vertical Integration"
                 ],
                 optionsTH: [
-                    "บริษัทดำเนินงานในตลาดผู้ขายน้อยรายซึ่งการประหยัดต่อขนาดยับยั้งความได้เปรียบ",
-                    "บริษัทเพียงแค่เพิ่มประสิทธิภาพการดำเนินงาน (Operational Effectiveness) ตามขอบเขตการผลิต ไม่ได้สร้างตำแหน่งทางยุทธศาสตร์ที่แตกต่าง (Unique Strategic Position)",
-                    "บริษัทล้มเหลวในการปกป้องทรัพย์สินทางปัญญาผ่าน Customer Switching Costs",
-                    "บริษัทให้ความสำคัญกับ Differentiation มากกว่า Overall Cost Leadership"
+                    "การเพิ่มประสิทธิภาพสูงสุดของการดำเนินงาน (OE Optimization)",
+                    "การแลกเปลี่ยนเชิงยุทธศาสตร์ Trade-offs (การเลือกสิ่งที่จะ 'ไม่ทำ')",
+                    "การประหยัดต่อขนาดฝั่งอุปทาน (Supply-side Economies of Scale)",
+                    "การรวมธุรกิจไปข้างหลัง (Backward Vertical Integration)"
                 ],
                 correctIndex: 1,
-                explanationTH: "ตามแนวคิดของ Michael Porter การปรับปรุงคุณภาพและลดความสูญเสียตาม Best Practice ถือเป็นเพียงการเพิ่ม 'Operational Effectiveness (OE)' หรือประสิทธิภาพในการดำเนินงาน ซึ่งคู่แข่งจะสามารถทำตามได้ทันในที่สุด Strategy ที่แท้จริงต้องเป็นการเลือกทำสิ่งที่แตกต่าง (Strategic Positioning)"
+                conceptSummaryTH: "💡 **สรุปแนวคิด Trade-offs:** Michael Porter ระบุว่า Strategy ที่ดีต้องมีการทำ Trade-offs คือการเลือกอย่างชัดเจนว่าจะไม่ทำอะไร หากพยายามทำทุกอย่างให้ทุกคน (Stuck in the middle) จะเกิดความสับสนและสูญเสียความได้เปรียบ",
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** คุณอาจสับสนกับความคุ้มค่า OE การพยายามทำบริการ 5 ดาวในราคาถูกไม่ใช่ปัญหาของ OE แต่เกิดจากการขาดทิศทางกลยุทธ์ที่ชัดเจน",
+                    "✓ **ข้อ B ถูกต้อง:** ธุรกิจนี้พยายามจับปลาสองมือ (ทั้งราคาถูกและบริการหรู) โดยไม่ยอม Trade-off ตัดบริการราคาแพงออก ทำให้ต้นทุนสูงแต่รายได้ต่ำ",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** Economies of Scale เกิดจากการผลิตสเกลใหญ่ ไม่ใช่สาเหตุหลักที่โรงแรมนี้บริหารจัดการผิดพลาด",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** Vertical Integration คือการเข้าซื้อซัพพลายเออร์ ไม่เกี่ยวข้องกับความสับสนด้านราคาและบริการ"
+                ]
             },
             {
-                id: 2,
-                questionEN: "A software startup plans to enter the cloud enterprise software market. Incumbent platforms benefit from deep integration into client Enterprise Resource Planning (ERP) databases and strong network effects. Which barriers present the greatest challenge to the startup?",
-                questionTH: "ซอฟต์แวร์สตาร์ทอัพวางแผนเข้าสู่ตลาด Cloud Enterprise แพลตฟอร์มเดิมในตลาดมีการเชื่อมต่อลึกกับฐานข้อมูล ERP ของลูกค้าและมี Network Effects สูง อุปสรรคการเข้าสู่ตลาด (Entry Barriers) ใดที่เป็นความท้าทายใหญ่ที่สุด?",
+                id: 102,
+                questionEN: "An organic baby food brand targets high-income, eco-conscious urban parents. It charges a 40% premium price and sells exclusively through high-end supermarkets. Which of Porter's Generic Strategies does this represent?",
+                questionTH: "แบรนด์อาหารเด็กออร์แกนิกเน้นขายเฉพาะกลุ่มพ่อแม่ในเมืองที่มีรายได้สูงและใส่ใจสิ่งแวดล้อม โดยตั้งราคาสูงกว่าปกติ 40% และขายเฉพาะซูเปอร์มาร์เก็ตพรีเมียมเท่านั้น จัดเป็นกลยุทธ์ generic strategy แบบใด?",
                 options: [
-                    "High customer switching costs and demand-side benefits of scale.",
-                    "Supply-side economies of scale and threat of substitutes.",
-                    "Government regulation and high threat of buyers.",
-                    "Bargaining power of suppliers and low capital requirements."
+                    "Overall Cost Leadership Strategy",
+                    "Cost Focus Strategy",
+                    "Differentiation Focus Strategy",
+                    "Broad Differentiation Strategy"
                 ],
                 optionsTH: [
-                    "ต้นทุนการเปลี่ยนผู้ให้บริการสูง (High Switching Costs) และผลประโยชน์การขยายขนาดฝั่งอุปสงค์ (Network Effects)",
-                    "การประหยัดต่อขนาดฝั่งอุปทาน (Supply-side Economies) และภัยคุกคามจากสินค้าทดแทน",
-                    "กฎระเบียบของรัฐบาล และอำนาจการต่อรองของผู้ซื้อในระดับสูง",
-                    "อำนาจต่อรองของซัพพลายเออร์ และความต้องการเงินลงทุนต่ำ"
+                    "กลยุทธ์การเป็นผู้นำด้านต้นทุนต่ำรวม (Overall Cost Leadership)",
+                    "กลยุทธ์เน้นต้นทุนต่ำเฉพาะกลุ่ม (Cost Focus)",
+                    "กลยุทธ์เน้นความแตกต่างเฉพาะกลุ่ม (Differentiation Focus)",
+                    "กลยุทธ์สร้างความแตกต่างวงกว้าง (Broad Differentiation)"
                 ],
-                correctIndex: 0,
-                explanationTH: "ระบบ ERP ที่เชื่อมต่อลึกสร้าง 'Customer Switching Costs' ที่สูงมากเนื่องจากลูกค้าย้ายระบบได้ยาก ส่วนระบบ Cloud ที่มีผู้ใช้มากจะเกิด 'Demand-Side Benefits of Scale (Network Effects)' ซึ่งดึงดูดผู้ใช้มากขึ้น สองปัจจัยนี้คือกำแพงกีดกันผู้เล่นใหม่ที่แข็งแกร่งที่สุด"
+                conceptSummaryTH: "💡 **สรุปแนวคิด Generic Strategies:** Porter แบ่งเป็น 2 มิติ: ความได้เปรียบ (Cost vs Differentiation) และ ขอบเขตตลาด (Broad Market vs Narrow Focus) เมื่อเจาะกลุ่ม Niche เฉพาะและเน้นความพรีเมียม จะถือเป็น Differentiation Focus",
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** แบรนด์นี้ขายราคาสูงกว่าปกติ 40% จึงไม่ได้เน้นต้นทุนต่ำ (Cost Leadership)",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** Cost Focus ต้องเน้นทำราคาต่ำให้กลุ่ม Niche แต่นี่ขายราคาสูงพรีเมียม",
+                    "✓ **ข้อ C ถูกต้อง:** มีการเจาะกลุ่มลูกค้า Niche ชัดเจน (พ่อแม่รายได้สูงในเมือง) และเน้นความต่างพรีเมียม (ออร์แกนิก + ราคาสูง)",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** Broad Differentiation ต้องเน้นจับตลาดมวลชนกว้างๆ (เช่น Apple, BMW) แต่นี่เจาะเฉพาะกลุ่มเด็กออร์แกนิก"
+                ]
             },
             {
-                id: 3,
-                questionEN: "A traditional beverage manufacturer observes a rising consumer shift toward health-conscious low-sugar drinks (External Opportunity), but realizes 80% of its current product line consists of high-sugar carbonated drinks (Internal Weakness). Which TOWS matrix strategy directly addresses this situation?",
-                questionTH: "ผู้ผลิตเครื่องดื่มแบบดั้งเดิมพบว่าผู้บริโภคหันมาสนใจเครื่องดื่มน้ำตาลน้อยเพื่อสุขภาพ (โอกาสภายนอก) แต่พบว่า 80% ของสินค้าปัจจุบันเป็นน้ำอัดลมน้ำตาลสูง (จุดอ่อนภายใน) กลยุทธ์ TOWS Matrix ใดที่ตรงกับสถานการณ์นี้?",
+                id: 103,
+                questionEN: "An airline executive notices that business travelers are increasingly using video conferencing apps (like Zoom) instead of flying for 1-hour face-to-face meetings. In Porter's Five Forces, how is Zoom classified for the airline?",
+                questionTH: "ผู้บริหารสายการบินพบว่านักธุรกิจหันไปใช้แอปวิดีโอคอล (เช่น Zoom) แทนการตีตั๋วเครื่องบินไปประชุมต่างจังหวัด 1 ชั่วโมง ในกรอบ Five Forces ซูมจัดเป็นแรงกดดันประเภทใดสำหรับสายการบิน?",
                 options: [
-                    "SO Strategy (Maxi-Maxi): Utilizing internal strengths to exploit external market opportunities.",
-                    "ST Strategy (Maxi-Mini): Leveraging internal strengths to mitigate external industry threats.",
-                    "WO Strategy (Mini-Maxi): Overcoming internal weaknesses by pursuing external market opportunities.",
-                    "WT Strategy (Mini-Mini): Minimizing internal weaknesses and avoiding external environmental threats."
+                    "Bargaining Power of Buyers",
+                    "Threat of Substitute Products/Services",
+                    "Intensity of Industry Rivalry",
+                    "Threat of New Entrants"
                 ],
-                optionsTH: [
-                    "กลยุทธ์ SO (Maxi-Maxi): ใช้จุดแข็งภายในเพื่อฉวยโอกาสภายนอกตลาด",
-                    "กลยุทธ์ ST (Maxi-Mini): ใช้จุดแข็งภายในเพื่อป้องกันและรับมืออุปสรรคภายนอก",
-                    "กลยุทธ์ WO (Mini-Maxi): เอาชนะและแก้ไขจุดอ่อนภายในเพื่อไขว่คว้าโอกาสใหม่ในตลาด",
-                    "กลยุทธ์ WT (Mini-Mini): ลดจุดอ่อนภายในและหลีกเลี่ยงอุปสรรคภายนอก"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** อำนาจผู้ซื้อคือการที่ลูกค้ารวมตัวต่อรองราคา แต่ Zoom เป็นผลิตภัณฑ์/บริการต่างอุตสาหกรรมที่เข้ามาแทนการเดินทาง",
+                    "✓ **ข้อ B ถูกต้อง:** Zoom อยู่คนละอุตสาหกรรม (Software vs Airline) แต่ตอบสนองเป้าหมายเดียวกันคือ 'การสื่อสารประชุม' จึงเป็น Substitute",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** Industry Rivalry คือการแข่งระหว่างสายการบินด้วยกันเอง (เช่น แอร์เอเชีย vs นกแอร์)",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** New Entrants คือสายการบินใหม่ที่เพิ่งเปิดให้บริการ"
                 ],
-                correctIndex: 2,
-                explanationTH: "การที่บริษัทมีผลิตภัณฑ์น้ำตาลสูงเป็น 'Internal Weakness' และกระแสสุขภาพเป็น 'External Opportunity' การปรับปรุงไลน์สินค้าเดิมหรือวิจัยสูตรใหม่เพื่อเข้าถึงตลาดสุขภาพจึงเป็นกลยุทธ์ WO (Mini-Maxi) เพื่อขจัดจุดอ่อนภายในและไขว่คว้าโอกาสภายนอก"
+                conceptSummaryTH: "💡 **สรุปแนวคิด Threat of Substitutes:** สินค้าทดแทนมาจาก *คนละอุตสาหกรรม* แต่วิธีการของมันสามารถตอบสนองความต้องการพื้นฐาน (Core Need) เดียวกันได้ ทำให้ลูกค้าเปลี่ยนไปใช้แทน"
             },
             {
-                id: 4,
-                questionEN: "A retail coffee chain redesigns its stores with ergonomic furniture, premium interior architecture, and live acoustic music. In Porter's Value Chain framework, how does this support activity investment primarily impact financial value creation?",
-                questionTH: "ร้านกาแฟรีเทลปรับโฉมร้านใหม่ด้วยเฟอร์นิเจอร์เพื่อสุขภาพ สถาปัตยกรรมระดับพรีเมียม และดนตรีสด ในกรอบ Value Chain ของ Porter การลงทุนในกิจกรรมสนับสนุนนี้ส่งผลต่อการสร้างมูลค่าทางการเงินอย่างไร?",
+                id: 104,
+                questionEN: "A tax accounting software company makes it extremely difficult and complex for users to export their multi-year tax records if they cancel their subscription. What entry barrier mechanism is the company leveraging?",
+                questionTH: "บริษัทซอฟต์แวร์บัญชีภาษีออกแบบให้การส่งออกข้อมูลประวัติภาษีย้อนหลังทำได้ยากและซับซ้อนมาก หากลูกค้าคิดจะยกเลิกบริการ บริษัทนี้กำลังใช้กลไกการสร้างเกราะป้องกัน (Entry Barrier) ข้อใด?",
                 options: [
-                    "It directly reduces Total Fixed Costs (TFC) across store locations.",
-                    "It increases customer willingness-to-pay (WTP), expanding the firm's profit margin.",
-                    "It eliminates variable costs (VC) associated with inbound and outbound logistics.",
-                    "It directly lowers the Break-Even Point (BEP) in sales unit volume."
+                    "Supply-side Economies of Scale",
+                    "Demand-side Network Effects",
+                    "High Customer Switching Costs",
+                    "Government Policy Restrictions"
                 ],
-                optionsTH: [
-                    "ลดต้นทุนคงที่รวม (Total Fixed Costs) ของแต่ละสาขาโดยตรง",
-                    "เพิ่มความยินดีที่จะจ่าย (Customer Willingness-to-Pay: WTP) ทำให้สามารถขยายอัตรากำไร (Profit Margin)",
-                    "กำจัดต้นทุนผันแปร (Variable Costs) ในการขนส่งขาเข้าและขาออก",
-                    "ลดจำนวนชิ้นของจุดคุ้มทุน (BEP) โดยตรง"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** Economies of Scale เกิดจากต้นทุนการผลิตลดลงเมื่อผลิตจำนวนมาก",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** Network Effects เกิดจากการที่คนยิ่งใช้เยอะ บริการยิ่งมีมูลค่า (เช่น Facebook)",
+                    "✓ **ข้อ C ถูกต้อง:** ความยุ่งยากและความยุ่งยากในการย้ายข้อมูลถือเป็น 'Switching Cost' ทำให้ลูกค้ายอมทนใช้ต่อแทนที่จะย้ายไปแบรนด์อื่น",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** ไม่ได้เกิดจากกฎหมายของรัฐบาล แต่เกิดจากการออกแบบระบบของบริษัทเอง"
                 ],
-                correctIndex: 1,
-                explanationTH: "การตกแต่งบรรยากาศและยกระดับประสบการณ์ลูกค้าช่วยสร้างคุณค่าที่ลูกค้ารับรู้ ส่งผลให้เพดานความยินดีที่จะจ่ายของลูกค้า (Willingness-to-Pay: WTP) สูงขึ้น ร้านจึงสามารถตั้งราคาขายได้สูงขึ้นและขยาย Profit Margin"
+                conceptSummaryTH: "💡 **สรุปแนวคิด Switching Costs:** คือต้นทุน (เงิน, เวลา, ความยุ่งยาก, จิตวิทยา) ที่เกิดขึ้นเมื่อลูกค้ายกเลิกจากยี่ห้อเดิมเพื่อย้ายไปยี่ห้อใหม่ ยิ่ง Switching Cost สูง ยิ่งขังลูกค้าไว้อยู่กับแบรนด์เดิมได้นาน"
             },
             {
-                id: 5,
-                questionEN: "A new specialty tea brand plans to open 2 retail branches in Bangkok. Each location operates 300 days per year, can serve up to 200 customers daily, and charges an average of 150 THB per order. What is the firm's Serviceable Obtainable Market (SOM) for Year 1 using a bottom-up calculation?",
-                questionTH: "แบรนด์ชาพิเศษเปิด 2 สาขาในกรุงเทพฯ แต่ละสาขาเปิด 300 วัน/ปี รับลูกค้าได้สูงสุด 200 คน/วัน ราคาเฉลี่ย 150 บาท/ออเดอร์ ขนาดตลาดที่คว้าได้จริง (SOM) สำหรับปีแรกโดยใช้คำนวณแบบ Bottom-Up คือเท่าใด?",
+                id: 105,
+                questionEN: "A national legislature passes a law requiring all electric scooter manufacturers to implement battery recycling traceability systems. In a PESTEL analysis, under which two categories does this factor fall?",
+                questionTH: "รัฐสภาออกกฎหมายบังคับให้ผู้ผลิตสกู๊ตเตอร์ไฟฟ้าทุกรายต้องจัดทำระบบติดตามการรีไซเคิลแบตเตอรี่ ในการวิเคราะห์ PESTEL ปัจจัยนี้จัดอยู่ใน 2 หมวดใด?",
                 options: [
-                    "18,000,000 THB",
-                    "90,000,000 THB",
-                    "9,000,000 THB",
-                    "36,000,000 THB"
+                    "Political and Economic",
+                    "Sociocultural and Technological",
+                    "Legal and Environmental",
+                    "Economic and Legal"
                 ],
-                optionsTH: [
-                    "18,000,000 บาท",
-                    "90,000,000 บาท",
-                    "9,000,000 บาท",
-                    "36,000,000 บาท"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** แม้กฎหมายมาจากรัฐบาล แต่มุมมองหลักใน PESTEL เรื่องกฎบังคับจะลงหมวด Legal และเรื่องการรีไซเคิลคือ Environmental",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** ไม่ใช่เรื่องค่านิยมสังคม (Sociocultural) แต่เป็นข้อบังคับตามกฎหมาย",
+                    "✓ **ข้อ C ถูกต้อง:** ข้อบังคับตามข้อกฎหมาย = Legal (L) และการจัดการขยะแบตเตอรี่รีไซเคิล = Environmental (E)",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** Economic เน้นเรื่องอัตราดอกเบี้ย เงินเฟ้อ ค่าเงิน ไม่เกี่ยวกับข้อบังคับรีไซเคิลโดยตรง"
                 ],
-                correctIndex: 0,
-                explanationTH: "สูตร SOM Bottom-Up = จำนวนสาขา x วันเปิด/ปี x ขีดความสามารถลูกค้า/วัน x ราคาต่อบิล = 2 สาขา x 300 วัน x 200 คน x 150 บาท = 18,000,000 บาท"
+                conceptSummaryTH: "💡 **สรุปแนวคิด PESTEL (Legal & Environmental):** Legal คือข้อบังคับทางกฎหมาย คดีความ และพระราชบัญญัติ ส่วน Environmental คือเรื่องสิ่งแวดล้อม ความยั่งยืน ขยะ และสภาวะอากาศ"
             },
             {
-                id: 6,
-                questionEN: "A company produces video conferencing software for corporate meetings. An executive identifies a high-speed intercity passenger rail line as a competitor because corporate clients might travel for face-to-face meetings instead of holding online calls. How should the rail line be classified?",
-                questionTH: "บริษัทผลิตซอฟต์แวร์ประชุมออนไลน์ ผู้บริหารระบุว่า 'รถไฟความเร็วสูงเชื่อมเมือง' เป็นคู่แข่งเนื่องจากลูกค้าองค์กรอาจเดินทางไปคุยงานแทนการวิดีโอคอล รถไฟความเร็วสูงจัดเป็นคู่แข่งประเภทใด?",
+                id: 106,
+                questionEN: "An online fashion retailer develops a custom Machine Learning algorithm that analyzes warehouse inventory and automates reordering from fabric suppliers before stockouts occur. In Porter's Value Chain, which activity is being performed?",
+                questionTH: "ร้านค้าแฟชั่นออนไลน์พัฒนาอัลกอริทึม Machine Learning เพื่อวิเคราะห์สต็อกคลังสินค้าและสั่งซื้อวัตถุดิบผ้าจากซัพพลายเออร์ให้อัตโนมัติก่อนสินค้าขาด ใน Value Chain ของ Porter กิจกรรมนี้จัดเป็นกิจกรรมประเภทใด?",
                 options: [
-                    "Direct competitor (Same target customer + Same technical solution)",
-                    "Indirect competitor (Same target customer + Alternative digital solution)",
-                    "Replacement competitor (Different vertical/solution satisfying the same core need)",
-                    "Monopolistic competitor (Single provider with high regulatory barriers)"
+                    "Primary Activity: Inbound Logistics",
+                    "Support Activity: Technology Development",
+                    "Primary Activity: Outbound Logistics",
+                    "Support Activity: Procurement"
                 ],
-                optionsTH: [
-                    "คู่แข่งทางตรง (ลูกค้ากลุ่มเดียวกัน + โซลูชันเดียวกัน)",
-                    "คู่แข่งทางอ้อม (ลูกค้ากลุ่มเดียวกัน + โซลูชันดิจิทัลทางเลือก)",
-                    "คู่แข่งทดแทน (อุตสาหกรรมคนละประเภทแต่วิธีแก้ตอบโจทย์ความต้องการพื้นฐานเดียวกัน)",
-                    "คู่แข่งกึ่งผูกขาด (ผู้เล่นรายเดียวที่มีกำแพงกฎหมายสูง)"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** Inbound Logistics คือการรับและจัดเก็บของ แต่การ *พัฒนาอัลกอริทึม AI* ถือเป็นโครงสร้างเทคโนโลยี",
+                    "✓ **ข้อ B ถูกต้อง:** การพัฒนาซอฟต์แวร์ อัลกอริทึม AI หรือเทคโนโลยีใหม่ๆ เพื่อสนับสนุนองค์กร จัดเป็น 'Technology Development' (Support Activity)",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** Outbound Logistics คือการจัดส่งสินค้าออกไปหาลูกค้า",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** แม้ระบบจะสั่งซื้อผ้า แต่ตัวแกนหลักของการสร้าง 'Machine Learning Algorithm' ตกอยู่ในหมวดพัฒนาเทคโนโลยี"
                 ],
-                correctIndex: 2,
-                explanationTH: "รถไฟความเร็วสูงและซอฟต์แวร์ประชุมอยู่ในคนละอุตสาหกรรมอย่างสิ้นเชิง แต่ตอบสนองความต้องการพื้นฐานหลักเดียวกัน (การสื่อสาร/การประชุมธุรกิจ) จึงจัดเป็น 'Replacement Competitor' (คู่แข่งทดแทนกันได้ในระดับความต้องการพื้นฐาน)"
+                conceptSummaryTH: "💡 **สรุปแนวคิด Value Chain (Tech Development):** กิจกรรมสนับสนุนด้านเทคโนโลยี (Tech Development) ครอบคลุมการวิจัย พัฒนาซอฟต์แวร์ AI และระบบอัตโนมัติที่ช่วยซัพพอร์ตกิจกรรมหลักให้มีประสิทธิภาพ"
             },
             {
-                id: 7,
-                questionEN: "A digital platform provides its core project management software to all registered users free of charge. However, it charges a recurring monthly fee of $29 for team analytics, unlimited storage, and API integration. Which primary revenue stream model is being executed?",
-                questionTH: "แพลตฟอร์มดิจิทัลให้บริการซอฟต์แวร์บริหารโครงการพื้นฐานฟรีแก่ผู้ใช้ทุกคน แต่คิดค่าบริการรายเดือน $29 สำหรับฟีเจอร์วิเคราะห์ทีมและ API โมเดลสร้างรายได้หลักนี้คืออะไร?",
+                id: 107,
+                questionEN: "A highly trusted hospital brand with excellent doctors (Internal Strength) faces an aggressive flood of unverified medical information on TikTok (External Threat). Which TOWS matrix strategy leverages its strength to counter this threat?",
+                questionTH: "โรงพยาบาลที่มีชื่อเสียงและได้รับความไว้วางใจสูงพร้อมทีมแพทย์เชี่ยวชาญ (จุดแข็ง) กำลังเผชิญกับข่าวปลอมทางการแพทย์ที่ไม่ได้รับการรับรองทะลักใน TikTok (อุปสรรค) กลยุทธ์ TOWS ใดใช้จุดแข็งรับมืออุปสรรคนี้?",
                 options: [
-                    "Freemium model (Free basic features with monetized premium tier)",
-                    "Usage fee model (Price directly proportional to metered usage)",
-                    "Licensing model (Granting legal rights to copy or reproduce software)",
-                    "Brokerage fee model (Intermediate percentage fee per match)"
+                    "SO Strategy (Maxi-Maxi)",
+                    "ST Strategy (Maxi-Mini)",
+                    "WO Strategy (Mini-Maxi)",
+                    "WT Strategy (Mini-Mini)"
                 ],
-                optionsTH: [
-                    "โมเดล Freemium (เปิดให้ใช้ฟีเจอร์พื้นฐานฟรี และคิดเงินค่าฟีเจอร์พรีเมียม)",
-                    "โมเดล คิดตามปริมาณการใช้งาน (Usage Fee)",
-                    "โมเดล ค่าสิทธิ์ใช้งานลิขสิทธิ์ (Licensing)",
-                    "โมเดล ค่านายหน้าคนกลาง (Brokerage Fee)"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** SO คือการใช้จุดแข็ง (S) เพื่อฉวยโอกาสภายนอก (O)",
+                    "✓ **ข้อ B ถูกต้อง:** ST (Maxi-Mini) คือการนำจุดแข็งภายใน (ชื่อเสียงและแพทย์เก่ง) มาตั้งรับและขจัดอุปสรรคภายนอก (เฟกนิวส์) เช่น ให้แพทย์จริงทำคอนเทนต์ตอบโต้",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** WO คือการแก้จุดอ่อนภายใน (W) เพื่อคว้าโอกาส (O)",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** WT คือการลดจุดอ่อน (W) และหลีกเลี่ยงอุปสรรค (T) เป็นกลยุทธ์ตั้งรับขั้นสุด"
                 ],
-                correctIndex: 0,
-                explanationTH: "การเปิดให้ใช้งานฟีเจอร์พื้นฐานฟรี (Free Tier) เพื่อขยายฐานผู้ใช้ให้กว้าง แล้วจัดเก็บค่าบริการสำหรับฟีเจอร์พรีเมียม (Premium Features) เรียกว่าโมเดล Freemium"
+                conceptSummaryTH: "💡 **สรุปแนวคิด TOWS Matrix (ST Strategy):** ST Strategy = Strength + Threat คือการนำศักยภาพหรือจุดแข็งที่เรามีอยู่แล้ว มาใช้เป็นเกราะป้องกันหรือบดขวากหนามอุปสรรคภายนอก"
             },
             {
-                id: 8,
-                questionEN: "A consumer electronics company manufactures smart sensors. Its total fixed cost (TFC) is $500,000, variable cost per unit (VC) is $40, and unit selling price (P) is $90. If the company produces and sells 12,000 units, what is its net profit?",
-                questionTH: "บริษัทอิเล็กทรอนิกส์ผลิตเซนเซอร์ มีต้นทุนคงที่รวม (TFC) = $500,000, ต้นทุนผันแปรต่อชิ้น (VC) = $40, ราคาขาย (P) = $90 หากขายได้ 12,000 ชิ้น กำไรสุทธิคือเท่าใด?",
+                id: 108,
+                questionEN: "A major commercial bank launches a state-of-the-art wealth management platform (Systems) under a new digital strategy (Strategy). However, sales stall because branch officers lack technical literacy (Skills) and resist selling digital products (Shared Values). According to McKinsey 7S, what failed?",
+                questionTH: "ธนาคารเปิดตัวระบบบริหารมรดกสุดทันสมัย (Systems) ตามกลยุทธ์ดิจิทัลใหม่ (Strategy) แต่ยอดขายกลับนิ่งสนิทเพราะพนักงานสาขาขาดทักษะดิจิทัล (Skills) และต่อต้านระบบใหม่ (Shared Values) ตาม McKinsey 7S เกิดความล้มเหลวที่จุดใด?",
                 options: [
-                    "$100,000 net profit",
-                    "$1,080,000 net profit",
-                    "$600,000 net profit",
-                    "$80,000 net profit"
+                    "Incompatibility between Hard S's and Soft S's",
+                    "Failure in Financial Ratio Analysis",
+                    "Ignoring PESTEL Legal Frameworks",
+                    "Improper Value Chain Primary Operations"
                 ],
-                optionsTH: [
-                    "กำไรสุทธิ $100,000",
-                    "กำไรสุทธิ $1,080,000",
-                    "กำไรสุทธิ $600,000",
-                    "กำไรสุทธิ $80,000"
+                optionExplanationsTH: [
+                    "✓ **ข้อ A ถูกต้อง:** McKinsey 7S ระบุว่าหากเปลี่ยนเฉพาะ Hard S's (Strategy, Systems) โดยละเลย Soft S's (Skills, Shared Values, Staff) องค์กรจะไม่เกิด Alignment และล้มเหลว",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** ไม่เกี่ยวกับตัวเลขทางการเงิน แต่เป็นเรื่องคนและความสอดคล้องขององค์กร",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** เป็นปัญหาการบริหารภายใน ไม่ใช่กฎหมายภายนอก",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** ไม่เกี่ยวกับขั้นตอนการผลิตหรือขนส่งใน Value Chain"
                 ],
-                correctIndex: 0,
-                explanationTH: "สูตร Master Profit = (P x Q) - [(VC x Q) + TFC] = (90 x 12,000) - [(40 x 12,000) + 500,000] = 1,080,000 - [480,000 + 500,000] = 1,080,000 - 980,000 = $100,000"
+                conceptSummaryTH: "💡 **สรุปแนวคิด McKinsey 7S Alignment:** องค์กรจะขับเคลื่อนสำเร็จได้ ต้องปรับทั้ง Hard S's (โครงสร้าง/ระบบ/กลยุทธ์) และ Soft S's (บุคลากร/ทักษะ/วัฒนธรรม) ให้สอดคล้องกันทุกมิติ"
             },
             {
-                id: 9,
-                questionEN: "A printing firm incurs monthly fixed operating expenses (TFC) of $120,000. The variable cost (VC) to produce one custom handbook is $15, and the selling price (P) per handbook is $45. How many handbooks (Q) must be sold monthly to reach the Break-Even Point (BEP)?",
-                questionTH: "โรงพิมพ์มีค่าใช้จ่ายคงที่รายเดือน (TFC) = $120,000 ต้นทุนผันแปรต่อคู่มือ (VC) = $15 ราคาขาย (P) = $45 ต้องขายคู่มือจำนวนกี่เล่ม (Q) เพื่อถึงจุดคุ้มทุน (BEP)?",
+                id: 109,
+                questionEN: "A boutique gym chain notices a severe drop in monthly memberships. Investigation reveals former members didn't move to another gym, but bought home smart fitness bikes (like Peloton) or VR workout headsets. How are these smart bikes classified?",
+                questionTH: "ฟิตเนสค่ายหนึ่งพบว่ายอดสมาชิกรายเดือนลดลงอย่างมาก เมื่อตรวจสอบพบว่าลูกค้าไม่ได้ย้ายไปฟิตเนสอื่น แต่ซื้อจักรยานออกกำลังกายสมาร์ตโฮม (เช่น Peloton) มาเล่นที่บ้าน จักรยานสมาร์ตโฮมนี้จัดเป็นคู่แข่งประเภทใด?",
                 options: [
-                    "4,000 units (handbooks)",
-                    "12,000 units (handbooks)",
-                    "2,667 units (handbooks)",
-                    "8,000 units (handbooks)"
+                    "Direct Competitor",
+                    "Indirect Competitor",
+                    "Replacement Competitor",
+                    "Monopolistic Competitor"
                 ],
-                optionsTH: [
-                    "4,000 เล่ม",
-                    "12,000 เล่ม",
-                    "2,667 เล่ม",
-                    "8,000 เล่ม"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** คู่แข่งทางตรงต้องเป็นฟิตเนสสถานที่ออกกำลังกายเหมือนกัน",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** คู่แข่งทางอ้อมคือกลุ่มบริการสุขภาพอื่นในมิติใกล้เคียง",
+                    "✓ **ข้อ C ถูกต้อง:** สินค้าต่าง category อย่างสิ้นเชิง (อุปกรณ์ออกกำลังกายที่บ้าน vs ฟิตเนสรายเดือน) แต่ตอบโจทย์การเสียเหงื่อรักษารูปร่างเหมือนกัน ถือเป็น Replacement Competitor",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** เป็นชื่อโครงสร้างตลาด ไม่ใช่การจัดประเภทคู่แข่ง"
                 ],
-                correctIndex: 0,
-                explanationTH: "สูตร BEP = TFC / (P - VC) = 120,000 / (45 - 15) = 120,000 / 30 = 4,000 เล่ม (โดยที่ 45 - 15 = 30 คือ Contribution Margin ต่อหน่วย)"
+                conceptSummaryTH: "💡 **สรุปแนวคิด Replacement Competitor:** คือคู่แข่งข้ามอุตสาหกรรม/ข้ามประเภทสินค้าที่เข้ามากกทับหรือทดแทนความต้องการของลูกค้าเดิมอย่างสิ้นเชิง"
             },
             {
-                id: 10,
-                questionEN: "An investor provides $200,000 in seed capital to launch a business. Over a 3-year period, the business generates total gross income of $350,000 and incurs total operating expenses of $110,000. What is the venture's Return on Investment (ROI)?",
-                questionTH: "นักลงทุนลงเงิน $200,000 เพื่อเปิดกิจการ ตลอด 3 ปี กิจการมีรายได้รวม $350,000 และมีค่าใช้จ่ายดำเนินงาน $110,000 ผลตอบแทนจากการลงทุน (ROI) คือเท่าใด?",
+                id: 110,
+                questionEN: "A gaming laptop brand segments its market not by age or income, but by users' gaming intensity (Casual Gamers vs Esports Professionals) and willingness to overclock hardware. Which segmentation basis is being used?",
+                questionTH: "แบรนด์โน้ตบุ๊กเกมมิ่งแบ่งส่วนตลาดโดยไม่ได้ดูที่อายุหรือรายได้ แต่ดูที่ระดับความจริงจังในการเล่นเกม (ผู้เล่นทั่วไป vs นักแข่ง Esports) และพฤติกรรมการปรับแต่งเครื่อง การแบ่งส่วนตลาดนี้ใช้เกณฑ์ใด?",
                 options: [
-                    "120% ROI yield",
-                    "70% ROI yield",
-                    "175% ROI yield",
-                    "55% ROI yield"
+                    "Demographic Segmentation",
+                    "Geographic Segmentation",
+                    "Psychographic & Behavioral Segmentation",
+                    "Macroeconomic Sizing"
                 ],
-                optionsTH: [
-                    "ผลตอบแทน 120%",
-                    "ผลตอบแทน 70%",
-                    "ผลตอบแทน 175%",
-                    "ผลตอบแทน 55%"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** Demographic คือประชากรศาสตร์ เช่น อายุ เพศ รายได้ อาชีพ",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** Geographic คือทำเล พื้นที่ สภาพอากาศ",
+                    "✓ **ข้อ C ถูกต้อง:** ความจริงจัง สไตล์ไลฟ์สไตล์ (Psychographic) และพฤติกรรมการใช้งานจริง (Behavioral) เป็นเกณฑ์ทางจิตวิทยาและพฤติกรรมศาสตร์",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** ไม่ใช่การแบ่งส่วนตลาด แต่เป็นการคำนวณขนาดเศรษฐกิจ"
                 ],
-                correctIndex: 0,
-                explanationTH: "กำไรสุทธิ = รายได้รวม - ค่าใช้จ่าย = 350,000 - 110,000 = $240,000 | สูตร ROI = (กำไรสุทธิ / เงินลงทุนรวม) x 100% = (240,000 / 200,000) x 100% = 120%"
+                conceptSummaryTH: "💡 **สรุปแนวคิด Behavioral & Psychographic Segmentation:** Behavioral คือการดูพฤติกรรมใช้งานจริง ความถี่ ส่วน Psychographic ดูที่ไลฟ์สไตล์ ความสนใจ และทัศนคติ"
             },
             {
-                id: 11,
-                questionEN: "A city has dozens of independent coffee shops. Each shop offers slightly distinct coffee blends, unique interior atmospheres, and custom menu items. Entry into this market is relatively easy, and no single shop dominates price-setting. What market structure does this industry represent?",
-                questionTH: "ในเมืองหนึ่งมีร้านกาแฟเอกลักษณ์เฉพาะตัวหลายสิบร้าน แต่ละร้านนำเสนอเมล็ดกาแฟผสมต่างกัน บรรยากาศต่างกัน การเข้าสู่ตลาดทำได้ง่าย และไม่มีร้านใดร้านหนึ่งผูกขาดการตั้งราคา โครงสร้างตลาดนี้คือรูปแบบใด?",
+                id: 111,
+                questionEN: "A cloud kitchen operates 3 virtual restaurant brands in Bangkok. Each location runs 350 days/year, has capacity to prepare 120 orders/day, and charges an average price of 200 THB/order. What is its Serviceable Obtainable Market (SOM) for Year 1 calculated Bottom-Up?",
+                questionTH: "ร้านอาหาร Cloud Kitchen มี 3 สาขาในกรุงเทพฯ แต่ละสาขาเปิด 350 วัน/ปี มีกำลังผลิต 120 ออเดอร์/วัน ราคาเฉลี่ย 200 บาท/ออเดอร์ ขนาดตลาด SOM ปีแรกที่คำนวณแบบ Bottom-Up คือเท่าใด?",
                 options: [
-                    "Monopoly (Single provider with absolute pricing power)",
-                    "Monopolistic Competition (Many sellers + Differentiated products + Low entry barriers)",
-                    "Oligopoly (A few dominant sellers controlling market supply)",
-                    "Perfect Competition (Many sellers + Identical homogeneous products)"
+                    "25,200,000 THB",
+                    "8,400,000 THB",
+                    "12,600,000 THB",
+                    "72,000,000 THB"
                 ],
-                optionsTH: [
-                    "ตลาดผูกขาดสมบูรณ์ (Monopoly)",
-                    "ตลาดกึ่งผูกขาดกึ่งแข่งขัน (Monopolistic Competition)",
-                    "ตลาดผู้ขายน้อยราย (Oligopoly)",
-                    "ตลาดแข่งขันสมบูรณ์ (Perfect Competition)"
+                optionExplanationsTH: [
+                    "✓ **ข้อ A ถูกต้อง:** สูตร SOM Bottom-Up = สาขา (3) x วันเปิด (350) x กำลังผลิต (120) x ราคา (200) = 25,200,000 บาท",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** 8,400,000 บาท เกิดจากการคำนวณเพียงแค่ 1 สาขา (ลืมคูณ 3 สาขา)",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** ตัวเลขนี้เกิดจากการลืมคูณจำนวนวันเปิด 350 วัน",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** เกิดจากการคูณตัวเลขผิดพลาด"
                 ],
-                correctIndex: 1,
-                explanationTH: "ตลาดกึ่งผูกขาดกึ่งแข่งขัน (Monopolistic Competition) มีผู้ขายจำนวนมาก สินค้ามีความแตกต่างกันเล็กน้อย (Product Differentiation) และอุปสรรคการเข้าสู่ตลาดต่ำ ต่างจาก Perfect Competition ที่สินค้าเหมือนกันทุกประการ"
+                conceptSummaryTH: "💡 **สรุปสูตร Bottom-Up SOM:** SOM = [จำนวนยูนิต/สาขา] x [วันทำการต่อปี] x [กำลังผลิตต่อวัน] x [ราคาเฉลี่ยต่อออเดอร์]"
             },
             {
-                id: 12,
-                questionEN: "An EV battery manufacturer relies heavily on a specialized chemical supplier that holds exclusive patents for a core raw material. There are no viable chemical alternatives available on the market. In Porter's Five Forces framework, how does this impact the battery manufacturer?",
-                questionTH: "ผู้ผลิตแบตเตอรี่รถยนต์ไฟฟ้าต้องพึ่งพาซัพพลายเออร์เคมีภัณฑ์เฉพาะทางที่มีสิทธิบัตรคุ้มครองวัตถุดิบหลักแต่เพียงผู้เดียว และไม่มีสารทดแทนในตลาด ในกรอบ Five Forces ของ Porter สถานการณ์นี้ส่งผลอย่างไรต่อผู้ผลิตแบตเตอรี่?",
+                id: 112,
+                questionEN: "In a Business Model Canvas (BMC) for a video streaming startup, 'Monthly Paid Subscription' is listed under Building Block A, while 'Mobile iOS/Android App & Smart TV App' is listed under Building Block B. What are A and B?",
+                questionTH: "ใน BMC ของแอปสตรีมมิ่ง 'ค่าบริการรายเดือนแบบสมาชิก' ถูกใส่ในช่อง A ส่วน 'แอปพลิเคชันบนมือถือและ Smart TV' ถูกใส่ในช่อง B ช่อง A และ B คืออะไรตามลำดับ?",
                 options: [
-                    "High bargaining power of buyers, compressing firm profits.",
-                    "High bargaining power of suppliers, compressing firm profitability.",
-                    "High threat of new entrants, lowering entry barriers.",
-                    "High threat of substitute products, increasing price elasticity."
+                    "A = Value Propositions | B = Key Resources",
+                    "A = Revenue Streams | B = Channels",
+                    "A = Customer Relationships | B = Revenue Streams",
+                    "A = Channels | B = Key Activities"
                 ],
-                optionsTH: [
-                    "อำนาจการต่อรองของผู้ซื้อสูง ทำให้กำไรลดลง",
-                    "อำนาจการต่อรองของซัพพลายเออร์สูง กดดันอัตราการทำกำไรของบริษัท",
-                    "ภัยคุกคามจากผู้เล่นรายใหม่สูง ทำให้เกราะป้องกันต่ำลง",
-                    "ภัยคุกคามจากสินค้าทดแทนสูง เพิ่มความยืดหยุ่นของราคา"
+                optionExplanationsTH: [
+                    "⚠️ **ทำไมข้อ A ถึงผิด:** ค่าสมัครรายเดือนคือกระแสรายได้ ไม่ใช่ Value Proposition",
+                    "✓ **ข้อ B ถูกต้อง:** A (ค่าบริการรายเดือน) = Revenue Streams และ B (แอปพลิเคชันทางเข้าถึงลูกค้า) = Channels",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** แอปไม่ใช่ Revenue Stream แต่เป็นช่องทาง Channels",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** เรียงลำดับสลับกัน"
                 ],
-                correctIndex: 1,
-                explanationTH: "เมื่อวัตถุดิบมีสิทธิบัตรผูกขาดและไม่มีสารทดแทน ซัพพลายเออร์จะมีอำนาจการต่อรองสูงมาก (High Bargaining Power of Suppliers) สามารถปรับขึ้นราคาหรือกำหนดเงื่อนไขที่กดดันกำไรของผู้ผลิตได้"
+                conceptSummaryTH: "💡 **สรุป BMC (Revenue Streams & Channels):** Revenue Streams คือแหล่งที่มาของเงิน/รายได้ ส่วน Channels คือช่องทางที่ใช้ส่งมอบสินค้าไปถึงมือลูกค้า"
             },
             {
-                id: 13,
-                questionEN: "A logistics firm adopts an automated warehouse strategy (Strategy) and restructures its reporting lines (Structure) and digital software (Systems). However, the rollout fails because employees lack requisite tech skills (Skills) and resist the new company culture (Shared Values). According to the McKinsey 7S framework, why did this initiative fail?",
-                questionTH: "บริษัทลอจิสติกส์ปรับกลยุทธ์คลังสินค้าอัตโนมัติ (Strategy) ปรับโครงสร้างองค์กร (Structure) และระบบซอฟต์แวร์ (Systems) แต่โครงการล้มเหลวเพราะพนักงานขาดทักษะดิจิทัล (Skills) และต่อต้านวัฒนธรรมใหม่ (Shared Values) ตามกรอบ McKinsey 7S ความล้มเหลวนี้เกิดจากอะไร?",
+                id: 113,
+                questionEN: "A custom streetwear brand sells hoodies for 800 THB each. The variable cost (fabric + sewing) is 300 THB per hoodie. Total monthly fixed overhead (rent + shop staff) is 200,000 THB. If the shop sells 500 hoodies this month, what is the net profit or loss?",
+                questionTH: "แบรนด์เสื้อผ้าขายเสื้อฮู้ดราคา 800 บาท/ตัว ต้นทุนผันแปร 300 บาท/ตัว ต้นทุนคงที่รายเดือน 200,000 บาท หากเดือนนี้ขายได้ 500 ตัว กำไรสุทธิหรือขาดทุนคือเท่าใด?",
                 options: [
-                    "The company failed to balance Hard S's with Soft S's to achieve organizational alignment.",
-                    "The company ignored PESTEL macro-environmental legal factors.",
-                    "The company focused too heavily on operational effectiveness rather than cost leadership.",
-                    "The company miscalculated its Break-Even Point across warehouse nodes."
+                    "Net Profit of 50,000 THB",
+                    "Net Loss of 50,000 THB",
+                    "Net Profit of 250,000 THB",
+                    "Break-even (0 THB)"
                 ],
-                optionsTH: [
-                    "บริษัทมุ่งเน้นเฉพาะปัจจัยกลุ่ม Hard S's โดยละเลยความสอดคล้องกับปัจจัยกลุ่ม Soft S's",
-                    "บริษัทละเลยปัจจัยทางกฎหมายภายนอกตามกรอบ PESTEL",
-                    "บริษัทเน้น Operational Effectiveness มากกว่า Cost Leadership",
-                    "บริษัทคำนวณจุดคุ้มทุน (BEP) ผิดพลาดในแต่ละคลังสินค้า"
+                optionExplanationsTH: [
+                    "✓ **ข้อ A ถูกต้อง:** รายได้รวม = 800 x 500 = 400,000 | ต้นทุนรวม = (300 x 500) + 200,000 = 350,000 | กำไรสุทธิ = 400,000 - 350,000 = +50,000 บาท",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** คุณอาจลืมนำรายได้รวมมาลบกับต้นทุนรวม หรือคำนวณเครื่องหมายผิด",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** 250,000 บาทคือ Contribution Margin รวม (500 x 500) แต่ยังไม่ได้ลบต้นทุนคงที่ TFC 200,000 บาท",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** จุดคุ้มทุนจริงต้องขายได้ 400 ตัว แต่นี่ขายได้ 500 ตัวจึงมีกำไร"
                 ],
-                correctIndex: 0,
-                explanationTH: "กรอบ McKinsey 7S ระบุว่าองค์กรจะประสบความสำเร็จได้ต้องมีความสอดคล้องทั้ง Hard S's (Strategy, Structure, Systems) และ Soft S's (Shared Values, Style, Staff, Skills) หากปรับเปลี่ยนเฉพาะ Hard S's โดยละเลย Soft S's จะเกิดแรงต้านและความล้มเหลว"
+                conceptSummaryTH: "💡 **สรุปสูตร Master Profit:** Profit = (Price x Q) - [(Variable Cost x Q) + Total Fixed Cost]"
             },
             {
-                id: 14,
-                questionEN: "A luxury watch manufacturer possesses an extremely strong brand legacy and high customer loyalty (Internal Strength), but faces a surge in cheap counterfeit replicas entering the market (External Threat). Which TOWS matrix strategy leverages its strength to counter this threat?",
-                questionTH: "แบรนด์นาฬิกาหรูมีประวัติศาสตร์แบรนด์ที่แข็งแกร่งและลูกค้าจงรักภักดีสูง (จุดแข็งภายใน) แต่กำลังเผชิญกับสินค้าเลียนแบบราคาถูกทะลักเข้าสู่ตลาด (อุปสรรคภายนอก) กลยุทธ์ TOWS Matrix ใดที่ใช้จุดแข็งเพื่อรับมืออุปสรรคนี้?",
+                id: 114,
+                questionEN: "A co-working space charges 4,000 THB/month per reserved desk. Variable maintenance and coffee/snack cost is 1,000 THB per desk/month. Total fixed lease and utilities costs are 150,000 THB/month. How many desks must be rented out monthly to reach the Break-Even Point (BEP)?",
+                questionTH: "โควอาร์กกิ้งสเปซคิดค่าเช่าโต๊ะ 4,000 บาท/เดือน ต้นทุนผันแปร (กาแฟ/ทำความสะอาด) 1,000 บาท/โต๊ะ/เดือน ต้นทุนคงที่ค่าเช่าตึก 150,000 บาท/เดือน ต้องปล่อยเช่ากี่โต๊ะถึงจะคุ้มทุน (BEP)?",
                 options: [
-                    "SO Strategy: Expand into low-cost mass production to capture new buyers.",
-                    "ST Strategy: Utilize brand prestige and digital anti-counterfeit verification to protect market share.",
-                    "WO Strategy: Reduce craftsmanship costs to match replica pricing.",
-                    "WT Strategy: Exit the luxury market segment entirely."
+                    "50 desks",
+                    "38 desks",
+                    "150 desks",
+                    "30 desks"
                 ],
-                optionsTH: [
-                    "กลยุทธ์ SO: ขยายไปยังการผลิตสเกลใหญ่ราคาถูกเพื่อจับลูกค้าใหม่",
-                    "กลยุทธ์ ST: ใช้คุณค่าและชื่อเสียงของแบรนด์ร่วมกับระบบตรวจเช็กของแท้ดิจิทัลเพื่อปกป้องส่วนแบ่งตลาด",
-                    "กลยุทธ์ WO: ลดต้นทุนงานฝีมือลงเพื่อให้ตั้งราคาแข่งกับของก๊อปได้",
-                    "กลยุทธ์ WT: ถอนตัวออกจากตลาดสินค้าหรูหราทั้งหมด"
+                optionExplanationsTH: [
+                    "✓ **ข้อ A ถูกต้อง:** Contribution Margin = 4,000 - 1,000 = 3,000 บาท/โต๊ะ | BEP = 150,000 / 3,000 = 50 โต๊ะ",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** เกิดจากการนำ 150,000 หารด้วยราคา 4,000 โดยไม่ได้ลบต้นทุนผันแปร 1,000 ออกก่อน",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** เกิดจากการนำ 150,000 หารด้วยต้นทุนผันแปร 1,000",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** ตัวเลขคำนวณสับสน"
                 ],
-                correctIndex: 1,
-                explanationTH: "การใช้จุดแข็งภายใน (Strength) เพื่อรับมืออุปสรรคภายนอก (Threat) คือกลยุทธ์ ST (Maxi-Mini) โดยนำชื่อเสียงความน่าเชื่อถือของแบรนด์มาสร้างระบบการันตีของแท้เพื่อต่อสู้กับสินค้าเลียนแบบ"
+                conceptSummaryTH: "💡 **สรุปสูตร BEP:** จุดคุ้มทุน (หน่วย) = ต้นทุนคงที่รวม TFC / (ราคาขาย P - ต้นทุนผันแปร VC)"
             },
             {
-                id: 15,
-                questionEN: "Volvo has consistently designed its vehicles and marketing campaigns around safety technology, ensuring consumers instantly associate the brand with security. Within the STP marketing framework, which phase does this strategic focus directly represent?",
-                questionTH: "ค่ายรถยนต์ Volvo ออกแบบยานยนต์และสื่อสารการตลาดโดยเน้นเรื่องความปลอดภัยมาโดยตลอด จนผู้บริโภจนึกถึงความปลอดภัยทันทีเมื่อได้ยินชื่อแบรนด์ ในกรอบ STP สิ่งนี้คือขั้นตอนใด?",
+                id: 115,
+                questionEN: "An e-commerce seller invests 100,000 THB in ad spend and initial inventory. At the end of the campaign, total sales revenue generated is 280,000 THB, and packaging/shipping costs incurred total 30,000 THB. What is the Return on Investment (ROI)?",
+                questionTH: "พ่อค้าออนไลน์ลงทุนค่าโฆษณาและสินค้า 100,000 บาท จบแคมเปญทำยอดขายได้ 280,000 บาท มีค่าแพ็กของส่งของ 30,000 บาท อัตราผลตอบแทนจากการลงทุน (ROI) คือกี่ %?",
                 options: [
-                    "Market Segmentation",
-                    "Target Audience Selection",
-                    "Brand Positioning",
-                    "Bottom-Up Market Sizing"
+                    "150% ROI",
+                    "180% ROI",
+                    "280% ROI",
+                    "120% ROI"
                 ],
-                optionsTH: [
-                    "การแบ่งส่วนตลาด (Market Segmentation)",
-                    "การเลือกกลุ่มเป้าหมาย (Targeting)",
-                    "การวางตำแหน่งแบรนด์ในใจผู้บริโภค (Positioning)",
-                    "การประเมินขนาดตลาดแบบ Bottom-Up"
+                optionExplanationsTH: [
+                    "✓ **ข้อ A ถูกต้อง:** กำไรสุทธิ = รายได้ (280,000) - ค่าขนส่ง (30,000) - เงินลงทุนเดิม (100,000) = 150,000 บาท | ROI = (150,000 / 100,000) x 100% = 150%",
+                    "⚠️ **ทำไมข้อ B ถึงผิด:** เกิดจากการลืมนำเงินลงทุน 100,000 มาหักออกจากกำไรสุทธิ",
+                    "⚠️ **ทำไมข้อ C ถึงผิด:** 280% คิดจากยอดขายรวม Revenue ไม่ใช่กำไรสุทธิ Net Profit",
+                    "⚠️ **ทำไมข้อ D ถึงผิด:** การคำนวณตัวเลขคลาดเคลื่อน"
                 ],
-                correctIndex: 2,
-                explanationTH: "Positioning คือการสร้างภาพจำและการครองพื้นที่ในใจผู้บริโภค (Mindshare) เพื่อให้แบรนด์มีความโดดเด่นและแตกต่างจากคู่แข่งเมื่อผู้บริโภคนึกถึงคุณประโยชน์เฉพาะนั้นๆ"
-            },
-            {
-                id: 16,
-                questionEN: "An ed-tech startup offers specialized coding courses. The total global demand for online coding education is $10 Billion (TAM). Courses tailored for university CS students in Southeast Asia represent $1 Billion (SAM). Based on current sales staff and marketing budget, the startup aims for $20 Million in Year 1. What does the $20 Million represent?",
-                questionTH: "สตาร์ทอัพด้าน EdTech สอนเขียนโปรแกรม มูลค่ารวมตลาดการเรียนเขียนโค้ดทั่วโลกคือ 1 หมื่นล้านเหรียญ (TAM) ส่วนตลาดนักศึกษาสาขาคอมพิวเตอร์ในเอเชียตะวันออกเฉียงใต้คือ 1 พันล้านเหรียญ (SAM) หากสตาร์ทอัพตั้งเป้ายอดขายปีแรกไว้ที่ 20 ล้านเหรียญ ตัวเลข 20 ล้านเหรียญนี้คืออะไร?",
-                options: [
-                    "Total Addressable Market (TAM)",
-                    "Serviceable Addressable Market (SAM)",
-                    "Serviceable Obtainable Market (SOM)",
-                    "Contribution Margin Ratio"
-                ],
-                optionsTH: [
-                    "ตลาดรวมทั้งหมด (TAM)",
-                    "ตลาดที่เข้าถึงได้ตามโมเดล (SAM)",
-                    "ตลาดที่คาดว่าจะคว้าได้จริงในระยะแรก (SOM)",
-                    "อัตรากำไรขอบขั้นต้น"
-                ],
-                correctIndex: 2,
-                explanationTH: "SOM (Serviceable Obtainable Market) คือเป้าหมายยอดขายหรือขนาดตลาดที่บริษัทคาดว่าจะคว้าส่วนแบ่งได้จริงในระยะแรก ภายใต้ข้อจำกัดด้านทรัพยากร ทีมงาน และงบประมาณที่มีอยู่จริง"
-            },
-            {
-                id: 17,
-                questionEN: "In the Business Model Canvas (BMC), a company uses an automated AI chatbot for 24/7 post-purchase support, and uses express courier services to ship physical orders to buyers' doorsteps. Which BMC building blocks do the chatbot and courier service belong to, respectively?",
-                questionTH: "ใน Business Model Canvas (BMC) บริษัทใช้ AI Chatbot ตอบคำถามหลังการขายตลอด 24 ชม. และใช้บริการขนส่งพัสดุด่วนจัดส่งสินค้าถึงบ้านลูกค้า Chatbot และบริการขนส่งจัดอยู่ในช่อง BMC ใดตามลำดับ?",
-                options: [
-                    "Chatbot = Customer Relationships | Courier = Channels",
-                    "Chatbot = Channels | Courier = Key Partners",
-                    "Chatbot = Value Propositions | Courier = Customer Relationships",
-                    "Chatbot = Key Activities | Courier = Revenue Streams"
-                ],
-                optionsTH: [
-                    "Chatbot = ความสัมพันธ์กับลูกค้า (Customer Relationships) | ขนส่ง = ช่องทางจัดส่ง (Channels)",
-                    "Chatbot = ช่องทาง (Channels) | ขนส่ง = พันธมิตรหลัก (Key Partners)",
-                    "Chatbot = คุณค่าที่ส่งมอบ (Value Propositions) | ขนส่ง = ความสัมพันธ์กับลูกค้า (Customer Relationships)",
-                    "Chatbot = กิจกรรมหลัก (Key Activities) | ขนส่ง = กระแสรายได้ (Revenue Streams)"
-                ],
-                correctIndex: 0,
-                explanationTH: "Chatbot สำหรับดูแลและซัพพอร์ตลูกค้าคือ Customer Relationships (การปฏิสัมพันธ์/รักษาลูกค้า) ส่วนบริการขนส่งสินค้าให้ถึงมือลูกค้าคือ Channels (ช่องทางในการส่งมอบสินค้า)"
-            },
-            {
-                id: 18,
-                questionEN: "A manufacturing firm increases its unit selling price (P) from $100 to $120, while its variable cost per unit (VC = $60) and total fixed costs (TFC = $240,000) remain unchanged. How does this price increase affect the firm's Break-Even Point in units (BEP)?",
-                questionTH: "โรงงานผลิตสินค้าปรับขึ้นราคาขายต่อหน่วย (P) จาก $100 เป็น $120 โดยที่ต้นทุนผันแปรต่อหน่วย (VC = $60) และต้นทุนคงที่รวม (TFC = $240,000) เท่าเดิม การปรับขึ้นราคานี้ส่งผลต่อจุดคุ้มทุน (BEP) อย่างไร?",
-                options: [
-                    "BEP increases from 2,400 units to 4,000 units.",
-                    "BEP decreases from 6,000 units to 4,000 units.",
-                    "BEP decreases from 4,000 units to 3,000 units.",
-                    "BEP remains unchanged at 2,400 units."
-                ],
-                optionsTH: [
-                    "จุดคุ้มทุนเพิ่มขึ้นจาก 2,400 ชิ้น เป็น 4,000 ชิ้น",
-                    "จุดคุ้มทุนลดลงจาก 6,000 ชิ้น เหลือ 4,000 ชิ้น",
-                    "จุดคุ้มทุนลดลงจาก 4,000 ชิ้น เหลือ 3,000 ชิ้น",
-                    "จุดคุ้มทุนเท่าเดิมที่ 2,400 ชิ้น"
-                ],
-                correctIndex: 1,
-                explanationTH: "สูตร BEP = TFC / (P - VC) | เดิม: 240,000 / (100 - 60) = 6,000 ชิ้น | ใหม่: 240,000 / (120 - 60) = 4,000 ชิ้น ดังนั้น จุดคุ้มทุนลดลงจาก 6,000 ชิ้น เหลือ 4,000 ชิ้น (คุ้มทุนเร็วขึ้น)"
-            },
-            {
-                id: 19,
-                questionEN: "A boutique brand sells handmade leather bags for 500 THB each. The variable material and labor cost is 200 THB per bag, and fixed workshop rent/utilities total 150,000 THB per month. If the workshop produces and sells 800 bags this month, what is its net profit or loss?",
-                questionTH: "แบรนด์กระเป๋าหนังขายกระเป๋าใบละ 500 บาท ต้นทุนผันแปร (ค่าหนัง+ค่าแรง) 200 บาท/ใบ ค่าเช่าและค่าใช้จ่ายคงที่ 150,000 บาท/เดือน หากเดือนนี้ผลิตและขายได้ 800 ใบ กำไรสุทธิหรือขาดทุนคือเท่าใด?",
-                options: [
-                    "Net Profit of 90,000 THB",
-                    "Net Loss of 30,000 THB",
-                    "Net Profit of 240,000 THB",
-                    "Exactly Break-Even (0 THB Profit)"
-                ],
-                optionsTH: [
-                    "กำไรสุทธิ 90,000 บาท",
-                    "ขาดทุนสุทธิ 30,000 บาท",
-                    "กำไรสุทธิ 240,000 บาท",
-                    "คุ้มทุนพอดี (กำไร 0 บาท)"
-                ],
-                correctIndex: 0,
-                explanationTH: "สูตร Profit = (P x Q) - [(VC x Q) + TFC] = (500 x 800) - [(200 x 800) + 150,000] = 400,000 - [160,000 + 150,000] = 400,000 - 310,000 = +90,000 บาท"
-            },
-            {
-                id: 20,
-                questionEN: "A franchisee invests 500,000 THB to open a new bubble tea shop. In Year 1, the shop generates total revenue of 850,000 THB and incurs total operational costs of 100,000 THB. What is the franchisee's Return on Investment (ROI) for Year 1?",
-                questionTH: "แฟรนไชส์ซีลงทุน 500,000 บาทเพื่อเปิดร้านชานมไข่มุก ในปีแรก ร้านทำรายได้รวม 850,000 บาท และมีค่าใช้จ่ายดำเนินงานรวม 100,000 บาท ผลตอบแทนจากการลงทุน (ROI) สำหรับปีแรกคือเท่าใด?",
-                options: [
-                    "150% ROI yield",
-                    "170% ROI yield",
-                    "70% ROI yield",
-                    "120% ROI yield"
-                ],
-                optionsTH: [
-                    "ผลตอบแทน 150%",
-                    "ผลตอบแทน 170%",
-                    "ผลตอบแทน 70%",
-                    "ผลตอบแทน 120%"
-                ],
-                correctIndex: 0,
-                explanationTH: "กำไรสุทธิ = 850,000 - 100,000 = 750,000 บาท | สูตร ROI = (กำไรสุทธิ / เงินลงทุนรวม) x 100% = (750,000 / 500,000) x 100% = 150%"
+                conceptSummaryTH: "💡 **สรุปสูตร ROI:** ROI (%) = (กำไรสุทธิ Net Profit / เงินลงทุนรวม Total Investment) x 100%"
             }
         ];
 
@@ -1316,7 +1219,7 @@
             renderFlashcard();
         }
 
-        // --- QUIZ LOGIC WITH BILINGUAL CHOICES ---
+        // --- QUIZ LOGIC WITH ENHANCED INCORRECT ANSWER FEEDBACK ---
         function setQuizLangMode(mode) {
             quizLangMode = mode;
             document.querySelectorAll('.quiz-lang-btn').forEach(btn => {
@@ -1414,7 +1317,7 @@
                         ${optionsHTML}
                     </div>
 
-                    <div id="quiz-exp-${q.id}" class="hidden p-4 rounded-xl text-xs space-y-1 mt-3"></div>
+                    <div id="quiz-exp-${q.id}" class="hidden p-4 rounded-xl text-xs space-y-3 mt-3"></div>
                 `;
                 container.appendChild(qBox);
 
@@ -1451,19 +1354,29 @@
             });
 
             if (expBox) expBox.classList.remove('hidden');
+
+            const selectedLetter = String.fromCharCode(65 + selectedIdx);
+            const correctLetter = String.fromCharCode(65 + q.correctIndex);
+            const selectedReason = q.optionExplanationsTH[selectedIdx];
+
             if (isCorrect) {
                 if (statusTag) {
                     statusTag.innerText = "✓ ถูกต้อง (Correct)";
                     statusTag.className = "text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg";
                 }
                 if (expBox) {
-                    expBox.className = "p-4 rounded-xl text-xs bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-1.5 mt-3 shadow-sm";
+                    expBox.className = "p-4 rounded-xl text-xs bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-2 mt-3 shadow-sm";
                     expBox.innerHTML = `
                         <div class="flex items-center gap-1.5 font-bold text-emerald-800 text-sm">
                             <i class="fa-solid fa-circle-check"></i>
-                            <span>ยอดเยี่ยม! ตอบถูกต้อง (Correct: ${String.fromCharCode(65 + q.correctIndex)})</span>
+                            <span>ยอดเยี่ยม! ตอบถูกต้อง (คำตอบคือข้อ ${correctLetter})</span>
                         </div>
-                        <p class="text-slate-700 leading-relaxed"><strong class="text-emerald-900">คำอธิบายเหตุผล:</strong> ${q.explanationTH}</p>
+                        <div class="bg-white/80 p-3 rounded-lg border border-emerald-200 space-y-1">
+                            <p class="font-semibold text-emerald-900">${q.conceptSummaryTH}</p>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed pt-1">
+                            <p><strong class="text-emerald-900">เหตุผลที่ถูก:</strong> ${selectedReason}</p>
+                        </div>
                     `;
                 }
             } else {
@@ -1472,14 +1385,35 @@
                     statusTag.className = "text-xs font-bold text-rose-700 bg-rose-100 px-2.5 py-1 rounded-lg";
                 }
                 if (expBox) {
-                    expBox.className = "p-4 rounded-xl text-xs bg-rose-50 border border-rose-200 text-rose-950 space-y-1.5 mt-3 shadow-sm";
+                    expBox.className = "p-4 rounded-xl text-xs bg-rose-50 border border-rose-200 text-rose-950 space-y-2.5 mt-3 shadow-sm";
                     expBox.innerHTML = `
-                        <div class="flex items-center gap-1.5 font-bold text-rose-800 text-sm">
+                        <div class="flex items-center gap-1.5 font-bold text-rose-800 text-sm border-b border-rose-200 pb-2">
                             <i class="fa-solid fa-circle-xmark"></i>
-                            <span>ยังไม่ถูกต้อง! เฉลยข้อที่ถูกต้องคือ: ${String.fromCharCode(65 + q.correctIndex)})</span>
+                            <span>ยังไม่ถูกต้อง! คุณเลือกข้อ ${selectedLetter} (เฉลยข้อที่ถูกต้องคือ: ข้อ ${correctLetter})</span>
                         </div>
-                        <p class="text-slate-800 font-medium">${q.options[q.correctIndex]}</p>
-                        <p class="text-slate-700 leading-relaxed mt-1"><strong class="text-rose-900">คำอธิบายเหตุผล:</strong> ${q.explanationTH}</p>
+
+                        <!-- 1. Concept Summary -->
+                        <div class="bg-indigo-900 text-white p-3 rounded-xl space-y-1 shadow-sm">
+                            <span class="text-[10px] uppercase font-bold text-indigo-300">📌 สรุปมโนทัศน์ (Core Concept Summary):</span>
+                            <p class="text-xs text-indigo-100 leading-relaxed">${q.conceptSummaryTH}</p>
+                        </div>
+
+                        <!-- 2. Why the selected option is wrong -->
+                        <div class="bg-white p-3.5 rounded-xl border border-rose-300 space-y-1">
+                            <p class="font-bold text-rose-900 flex items-center gap-1">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> วิเคราะห์เหตุผลที่คุณเลือกข้อ ${selectedLetter}:
+                            </p>
+                            <p class="text-slate-700 leading-relaxed">${selectedReason}</p>
+                        </div>
+
+                        <!-- 3. Why the correct answer is right -->
+                        <div class="bg-emerald-100/70 p-3.5 rounded-xl border border-emerald-300 space-y-1">
+                            <p class="font-bold text-emerald-900 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-emerald-600"></i> เฉลยที่ถูกต้อง (ข้อ ${correctLetter}):
+                            </p>
+                            <p class="text-slate-800 font-medium">${q.options[q.correctIndex]}</p>
+                            <p class="text-slate-700 leading-relaxed mt-1">${q.optionExplanationsTH[q.correctIndex]}</p>
+                        </div>
                     `;
                 }
             }
