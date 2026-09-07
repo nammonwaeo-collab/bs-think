@@ -83,7 +83,7 @@
                     </div>
                     <div>
                         <h1 class="font-bold text-lg leading-tight">INT110 Business Thinking</h1>
-                        <p class="text-xs text-indigo-200">สรุปเนื้อหา + แฟลชการ์ด + ข้อสอบใหม่ระบบเฉลยละเอียด</p>
+                        <p class="text-xs text-indigo-200">สรุปเนื้อหา + แฟลชการ์ด + คลังข้อสอบใหม่ 15 ข้อ</p>
                     </div>
                 </div>
 
@@ -99,7 +99,7 @@
                     </button>
                     <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 text-indigo-200 hover:text-white hover:bg-white/5">
                         <i class="fa-solid fa-pen-to-square"></i>
-                        <span>คลังข้อสอบใหม่ (พร้อมเหตุผลฉบับเจาะลึก)</span>
+                        <span>คลังข้อสอบใหม่ (15 ข้อพร้อมวิเคราะห์)</span>
                     </button>
                     <button onclick="switchTab('calc')" id="nav-calc" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 text-indigo-200 hover:text-white hover:bg-white/5">
                         <i class="fa-solid fa-calculator"></i>
@@ -142,7 +142,6 @@
 
         <!-- TAB 1: สรุปบทเรียน (SUMMARY SECTION) -->
         <section id="tab-summary" class="tab-content space-y-6">
-            <!-- Summary Banner -->
             <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">Complete Course Summary</span>
@@ -166,7 +165,6 @@
                 <button onclick="filterSummary('finance')" class="summary-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-slate-200 text-slate-700 hover:bg-slate-300">W5: BMC & Formulas</button>
             </div>
 
-            <!-- Summary Cards Grid -->
             <div id="summary-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Dynamic HTML generated via JS -->
             </div>
@@ -183,7 +181,6 @@
                     <p class="text-xs text-slate-500 mt-1">คลิกที่การ์ดเพื่อพลิกดูคำตอบและคำแปลภาษาไทย</p>
                 </div>
 
-                <!-- Flashcard Controls -->
                 <div class="flex items-center gap-2">
                     <button onclick="shuffleFlashcards()" class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs font-medium hover:bg-slate-200 transition flex items-center gap-1.5">
                         <i class="fa-solid fa-shuffle"></i> สุ่มการ์ด
@@ -194,7 +191,6 @@
                 </div>
             </div>
 
-            <!-- Progress Bar -->
             <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
                 <div class="flex justify-between text-xs font-semibold text-slate-600">
                     <span id="card-progress-text">การ์ดใบที่ 1 / 25</span>
@@ -205,12 +201,10 @@
                 </div>
             </div>
 
-            <!-- Single Card Flip View -->
             <div class="max-w-xl mx-auto">
                 <div class="card-flip w-full min-h-[340px] cursor-pointer" onclick="flipCard()">
                     <div id="card-inner" class="card-inner relative w-full min-h-[340px] rounded-2xl shadow-xl border border-indigo-100 bg-white">
 
-                        <!-- Front Side -->
                         <div class="card-front absolute inset-0 p-8 flex flex-col justify-between rounded-2xl bg-gradient-to-br from-white via-indigo-50/30 to-purple-50/50">
                             <div class="flex justify-between items-center">
                                 <span class="text-xs font-bold px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full" id="card-tag">Term Concept</span>
@@ -227,7 +221,6 @@
                             </div>
                         </div>
 
-                        <!-- Back Side -->
                         <div class="card-back absolute inset-0 p-8 flex flex-col justify-between rounded-2xl bg-indigo-900 text-white">
                             <div class="flex justify-between items-center">
                                 <span class="text-xs font-bold px-3 py-1 bg-indigo-800 text-indigo-200 rounded-full">คำอธิบาย & คำแปลไทย</span>
@@ -251,7 +244,6 @@
                     </div>
                 </div>
 
-                <!-- Navigation Controls -->
                 <div class="flex items-center justify-between mt-6">
                     <button onclick="prevCard()" class="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 rounded-xl font-medium text-sm hover:bg-slate-50 transition shadow-sm flex items-center gap-2">
                         <i class="fa-solid fa-arrow-left"></i> ย้อนกลับ
@@ -276,18 +268,15 @@
 
         <!-- TAB 3: คลังข้อสอบ (NEW PRACTICE QUIZ SECTION) -->
         <section id="tab-quiz" class="tab-content hidden space-y-6">
-            <!-- Quiz Header Banner -->
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
                         <i class="fa-solid fa-pen-to-square text-indigo-600"></i> คลังข้อสอบใหม่แบบวิเคราะห์การตอบผิด (15 Scenario Questions)
                     </h2>
-                    <p class="text-xs text-slate-500 mt-1">พร้อมระบบวิเคราะห์ทันทีเมื่อตอบผิด: สรุป概念เรื่องนั้น + อธิบายว่าทำไมตัวเลือกที่คุณกดจึงเข้าใจผิด</p>
+                    <p class="text-xs text-slate-500 mt-1">พร้อมระบบวิเคราะห์ทันทีเมื่อตอบผิด: สรุป concept เรื่องนั้น + อธิบายว่าทำไมตัวเลือกที่คุณกดจึงเข้าใจผิด</p>
                 </div>
 
-                <!-- Quiz Options Controls -->
                 <div class="flex flex-wrap items-center gap-2.5">
-                    <!-- Language Mode Switcher -->
                     <div class="bg-slate-100 p-1 rounded-xl flex items-center gap-1 text-xs">
                         <button onclick="setQuizLangMode('bilingual')" id="btn-lang-bilingual" class="quiz-lang-btn px-3 py-1.5 rounded-lg font-semibold bg-indigo-600 text-white shadow-sm transition">
                             <i class="fa-solid fa-language mr-1"></i> 2 ภาษา (EN+TH)
@@ -309,9 +298,8 @@
                 </div>
             </div>
 
-            <!-- Quiz Questions Container -->
             <div id="quiz-container" class="space-y-6">
-                <!-- Dynamically populated quiz items with bilingual choices -->
+                <!-- Dynamically populated quiz items -->
             </div>
         </section>
 
@@ -355,7 +343,6 @@
                         </div>
                     </div>
 
-                    <!-- Output Box -->
                     <div class="bg-slate-900 text-white p-4 rounded-xl space-y-2 mt-4 font-mono text-xs">
                         <div class="flex justify-between border-b border-slate-800 pb-1.5">
                             <span class="text-slate-400">กำไรขอบขั้นต้นต่อหน่วย (Unit CM):</span>
@@ -419,7 +406,6 @@
                         </div>
                     </div>
 
-                    <!-- Output Box -->
                     <div class="bg-slate-900 text-white p-4 rounded-xl space-y-2 mt-4 font-mono text-xs">
                         <div class="flex justify-between border-b border-slate-800 pb-1.5">
                             <span class="text-slate-400">ผลตอบแทนการลงทุน (ROI %):</span>
@@ -818,6 +804,7 @@
                     "กลยุทธ์เน้นความแตกต่างเฉพาะกลุ่ม (Differentiation Focus)",
                     "กลยุทธ์สร้างความแตกต่างวงกว้าง (Broad Differentiation)"
                 ],
+                correctIndex: 2,
                 conceptSummaryTH: "💡 **สรุปแนวคิด Generic Strategies:** Porter แบ่งเป็น 2 มิติ: ความได้เปรียบ (Cost vs Differentiation) และ ขอบเขตตลาด (Broad Market vs Narrow Focus) เมื่อเจาะกลุ่ม Niche เฉพาะและเน้นความพรีเมียม จะถือเป็น Differentiation Focus",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** แบรนด์นี้ขายราคาสูงกว่าปกติ 40% จึงไม่ได้เน้นต้นทุนต่ำ (Cost Leadership)",
@@ -836,13 +823,20 @@
                     "Intensity of Industry Rivalry",
                     "Threat of New Entrants"
                 ],
+                optionsTH: [
+                    "อำนาจต่อรองของผู้ซื้อ (Bargaining Power of Buyers)",
+                    "ภัยคุกคามจากสินค้า/บริการทดแทน (Threat of Substitutes)",
+                    "ความรุนแรงของการแข่งขันระหว่างคู่แข่งเดิม (Industry Rivalry)",
+                    "ภัยคุกคามจากผู้เล่นรายใหม่ (Threat of New Entrants)"
+                ],
+                correctIndex: 1,
+                conceptSummaryTH: "💡 **สรุปแนวคิด Threat of Substitutes:** สินค้าทดแทนมาจาก *คนละอุตสาหกรรม* แต่วิธีการของมันสามารถตอบสนองความต้องการพื้นฐาน (Core Need) เดียวกันได้ ทำให้ลูกค้าเปลี่ยนไปใช้แทน",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** อำนาจผู้ซื้อคือการที่ลูกค้ารวมตัวต่อรองราคา แต่ Zoom เป็นผลิตภัณฑ์/บริการต่างอุตสาหกรรมที่เข้ามาแทนการเดินทาง",
                     "✓ **ข้อ B ถูกต้อง:** Zoom อยู่คนละอุตสาหกรรม (Software vs Airline) แต่ตอบสนองเป้าหมายเดียวกันคือ 'การสื่อสารประชุม' จึงเป็น Substitute",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** Industry Rivalry คือการแข่งระหว่างสายการบินด้วยกันเอง (เช่น แอร์เอเชีย vs นกแอร์)",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** New Entrants คือสายการบินใหม่ที่เพิ่งเปิดให้บริการ"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด Threat of Substitutes:** สินค้าทดแทนมาจาก *คนละอุตสาหกรรม* แต่วิธีการของมันสามารถตอบสนองความต้องการพื้นฐาน (Core Need) เดียวกันได้ ทำให้ลูกค้าเปลี่ยนไปใช้แทน"
+                ]
             },
             {
                 id: 104,
@@ -854,13 +848,20 @@
                     "High Customer Switching Costs",
                     "Government Policy Restrictions"
                 ],
+                optionsTH: [
+                    "การประหยัดต่อขนาดฝั่งอุปทาน (Supply-side Economies of Scale)",
+                    "ผลกระทบจากเครือข่ายฝั่งอุปสงค์ (Demand-side Network Effects)",
+                    "ต้นทุนการเปลี่ยนผู้ให้บริการสูง (High Customer Switching Costs)",
+                    "ข้อจำกัดจากนโยบายรัฐบาล (Government Policy Restrictions)"
+                ],
+                correctIndex: 2,
+                conceptSummaryTH: "💡 **สรุปแนวคิด Switching Costs:** คือต้นทุน (เงิน, เวลา, ความยุ่งยาก, จิตวิทยา) ที่เกิดขึ้นเมื่อลูกค้ายกเลิกจากยี่ห้อเดิมเพื่อย้ายไปยี่ห้อใหม่ ยิ่ง Switching Cost สูง ยิ่งขังลูกค้าไว้อยู่กับแบรนด์เดิมได้นาน",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** Economies of Scale เกิดจากต้นทุนการผลิตลดลงเมื่อผลิตจำนวนมาก",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** Network Effects เกิดจากการที่คนยิ่งใช้เยอะ บริการยิ่งมีมูลค่า (เช่น Facebook)",
                     "✓ **ข้อ C ถูกต้อง:** ความยุ่งยากและความยุ่งยากในการย้ายข้อมูลถือเป็น 'Switching Cost' ทำให้ลูกค้ายอมทนใช้ต่อแทนที่จะย้ายไปแบรนด์อื่น",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** ไม่ได้เกิดจากกฎหมายของรัฐบาล แต่เกิดจากการออกแบบระบบของบริษัทเอง"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด Switching Costs:** คือต้นทุน (เงิน, เวลา, ความยุ่งยาก, จิตวิทยา) ที่เกิดขึ้นเมื่อลูกค้ายกเลิกจากยี่ห้อเดิมเพื่อย้ายไปยี่ห้อใหม่ ยิ่ง Switching Cost สูง ยิ่งขังลูกค้าไว้อยู่กับแบรนด์เดิมได้นาน"
+                ]
             },
             {
                 id: 105,
@@ -872,13 +873,20 @@
                     "Legal and Environmental",
                     "Economic and Legal"
                 ],
+                optionsTH: [
+                    "การเมืองและเศรษฐกิจ (Political & Economic)",
+                    "สังคมวัฒนธรรมและเทคโนโลยี (Sociocultural & Technological)",
+                    "กฎหมายและสิ่งแวดล้อม (Legal & Environmental)",
+                    "เศรษฐกิจและกฎหมาย (Economic & Legal)"
+                ],
+                correctIndex: 2,
+                conceptSummaryTH: "💡 **สรุปแนวคิด PESTEL (Legal & Environmental):** Legal คือข้อบังคับทางกฎหมาย คดีความ และพระราชบัญญัติ ส่วน Environmental คือเรื่องสิ่งแวดล้อม ความยั่งยืน ขยะ และสภาวะอากาศ",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** แม้กฎหมายมาจากรัฐบาล แต่มุมมองหลักใน PESTEL เรื่องกฎบังคับจะลงหมวด Legal และเรื่องการรีไซเคิลคือ Environmental",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** ไม่ใช่เรื่องค่านิยมสังคม (Sociocultural) แต่เป็นข้อบังคับตามกฎหมาย",
                     "✓ **ข้อ C ถูกต้อง:** ข้อบังคับตามข้อกฎหมาย = Legal (L) และการจัดการขยะแบตเตอรี่รีไซเคิล = Environmental (E)",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** Economic เน้นเรื่องอัตราดอกเบี้ย เงินเฟ้อ ค่าเงิน ไม่เกี่ยวกับข้อบังคับรีไซเคิลโดยตรง"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด PESTEL (Legal & Environmental):** Legal คือข้อบังคับทางกฎหมาย คดีความ และพระราชบัญญัติ ส่วน Environmental คือเรื่องสิ่งแวดล้อม ความยั่งยืน ขยะ และสภาวะอากาศ"
+                ]
             },
             {
                 id: 106,
@@ -890,13 +898,20 @@
                     "Primary Activity: Outbound Logistics",
                     "Support Activity: Procurement"
                 ],
+                optionsTH: [
+                    "กิจกรรมหลัก: การขนส่งและจัดเก็บวัตถุดิบ (Inbound Logistics)",
+                    "กิจกรรมสนับสนุน: การพัฒนาเทคโนโลยี (Technology Development)",
+                    "กิจกรรมหลัก: การขนส่งสินค้าออก (Outbound Logistics)",
+                    "กิจกรรมสนับสนุน: การจัดซื้อจัดจ้าง (Procurement)"
+                ],
+                correctIndex: 1,
+                conceptSummaryTH: "💡 **สรุปแนวคิด Value Chain (Tech Development):** กิจกรรมสนับสนุนด้านเทคโนโลยี (Tech Development) ครอบคลุมการวิจัย พัฒนาซอฟต์แวร์ AI และระบบอัตโนมัติที่ช่วยซัพพอร์ตกิจกรรมหลักให้มีประสิทธิภาพ",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** Inbound Logistics คือการรับและจัดเก็บของ แต่การ *พัฒนาอัลกอริทึม AI* ถือเป็นโครงสร้างเทคโนโลยี",
                     "✓ **ข้อ B ถูกต้อง:** การพัฒนาซอฟต์แวร์ อัลกอริทึม AI หรือเทคโนโลยีใหม่ๆ เพื่อสนับสนุนองค์กร จัดเป็น 'Technology Development' (Support Activity)",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** Outbound Logistics คือการจัดส่งสินค้าออกไปหาลูกค้า",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** แม้ระบบจะสั่งซื้อผ้า แต่ตัวแกนหลักของการสร้าง 'Machine Learning Algorithm' ตกอยู่ในหมวดพัฒนาเทคโนโลยี"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด Value Chain (Tech Development):** กิจกรรมสนับสนุนด้านเทคโนโลยี (Tech Development) ครอบคลุมการวิจัย พัฒนาซอฟต์แวร์ AI และระบบอัตโนมัติที่ช่วยซัพพอร์ตกิจกรรมหลักให้มีประสิทธิภาพ"
+                ]
             },
             {
                 id: 107,
@@ -908,13 +923,20 @@
                     "WO Strategy (Mini-Maxi)",
                     "WT Strategy (Mini-Mini)"
                 ],
+                optionsTH: [
+                    "กลยุทธ์ SO (เชิงรุก: ใช้จุดแข็งฉวยโอกาส)",
+                    "กลยุทธ์ ST (เชิงป้องกัน: ใช้จุดแข็งรับมืออุปสรรค)",
+                    "กลยุทธ์ WO (เชิงปรับปรุง: แก้จุดอ่อนเพื่อคว้าโอกาส)",
+                    "กลยุทธ์ WT (เชิงตั้งรับ: ลดจุดอ่อนและหลบอุปสรรค)"
+                ],
+                correctIndex: 1,
+                conceptSummaryTH: "💡 **สรุปแนวคิด TOWS Matrix (ST Strategy):** ST Strategy = Strength + Threat คือการนำศักยภาพหรือจุดแข็งที่เรามีอยู่แล้ว มาใช้เป็นเกราะป้องกันหรือบดขวากหนามอุปสรรคภายนอก",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** SO คือการใช้จุดแข็ง (S) เพื่อฉวยโอกาสภายนอก (O)",
                     "✓ **ข้อ B ถูกต้อง:** ST (Maxi-Mini) คือการนำจุดแข็งภายใน (ชื่อเสียงและแพทย์เก่ง) มาตั้งรับและขจัดอุปสรรคภายนอก (เฟกนิวส์) เช่น ให้แพทย์จริงทำคอนเทนต์ตอบโต้",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** WO คือการแก้จุดอ่อนภายใน (W) เพื่อคว้าโอกาส (O)",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** WT คือการลดจุดอ่อน (W) และหลีกเลี่ยงอุปสรรค (T) เป็นกลยุทธ์ตั้งรับขั้นสุด"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด TOWS Matrix (ST Strategy):** ST Strategy = Strength + Threat คือการนำศักยภาพหรือจุดแข็งที่เรามีอยู่แล้ว มาใช้เป็นเกราะป้องกันหรือบดขวากหนามอุปสรรคภายนอก"
+                ]
             },
             {
                 id: 108,
@@ -926,13 +948,20 @@
                     "Ignoring PESTEL Legal Frameworks",
                     "Improper Value Chain Primary Operations"
                 ],
+                optionsTH: [
+                    "ความไม่สอดคล้องกันระหว่าง Hard S's และ Soft S's",
+                    "ความล้มเหลวในการวิเคราะห์อัตราส่วนทางการเงิน",
+                    "การละเลยกรอบกฎหมาย PESTEL",
+                    "การดำเนินงานกิจกรรมหลักใน Value Chain ไม่เหมาะสม"
+                ],
+                correctIndex: 0,
+                conceptSummaryTH: "💡 **สรุปแนวคิด McKinsey 7S Alignment:** องค์กรจะขับเคลื่อนสำเร็จได้ ต้องปรับทั้ง Hard S's (โครงสร้าง/ระบบ/กลยุทธ์) และ Soft S's (บุคลากร/ทักษะ/วัฒนธรรม) ให้สอดคล้องกันทุกมิติ",
                 optionExplanationsTH: [
                     "✓ **ข้อ A ถูกต้อง:** McKinsey 7S ระบุว่าหากเปลี่ยนเฉพาะ Hard S's (Strategy, Systems) โดยละเลย Soft S's (Skills, Shared Values, Staff) องค์กรจะไม่เกิด Alignment และล้มเหลว",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** ไม่เกี่ยวกับตัวเลขทางการเงิน แต่เป็นเรื่องคนและความสอดคล้องขององค์กร",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** เป็นปัญหาการบริหารภายใน ไม่ใช่กฎหมายภายนอก",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** ไม่เกี่ยวกับขั้นตอนการผลิตหรือขนส่งใน Value Chain"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด McKinsey 7S Alignment:** องค์กรจะขับเคลื่อนสำเร็จได้ ต้องปรับทั้ง Hard S's (โครงสร้าง/ระบบ/กลยุทธ์) และ Soft S's (บุคลากร/ทักษะ/วัฒนธรรม) ให้สอดคล้องกันทุกมิติ"
+                ]
             },
             {
                 id: 109,
@@ -944,13 +973,20 @@
                     "Replacement Competitor",
                     "Monopolistic Competitor"
                 ],
+                optionsTH: [
+                    "คู่แข่งทางตรง (Direct Competitor)",
+                    "คู่แข่งทางอ้อม (Indirect Competitor)",
+                    "คู่แข่งทดแทน (Replacement Competitor)",
+                    "คู่แข่งในตลาดแข่งขันกันมากราย (Monopolistic Competitor)"
+                ],
+                correctIndex: 2,
+                conceptSummaryTH: "💡 **สรุปแนวคิด Replacement Competitor:** คือคู่แข่งข้ามอุตสาหกรรม/ข้ามประเภทสินค้าที่เข้ามากกทับหรือทดแทนความต้องการของลูกค้าเดิมอย่างสิ้นเชิง",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** คู่แข่งทางตรงต้องเป็นฟิตเนสสถานที่ออกกำลังกายเหมือนกัน",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** คู่แข่งทางอ้อมคือกลุ่มบริการสุขภาพอื่นในมิติใกล้เคียง",
                     "✓ **ข้อ C ถูกต้อง:** สินค้าต่าง category อย่างสิ้นเชิง (อุปกรณ์ออกกำลังกายที่บ้าน vs ฟิตเนสรายเดือน) แต่ตอบโจทย์การเสียเหงื่อรักษารูปร่างเหมือนกัน ถือเป็น Replacement Competitor",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** เป็นชื่อโครงสร้างตลาด ไม่ใช่การจัดประเภทคู่แข่ง"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด Replacement Competitor:** คือคู่แข่งข้ามอุตสาหกรรม/ข้ามประเภทสินค้าที่เข้ามากกทับหรือทดแทนความต้องการของลูกค้าเดิมอย่างสิ้นเชิง"
+                ]
             },
             {
                 id: 110,
@@ -962,13 +998,20 @@
                     "Psychographic & Behavioral Segmentation",
                     "Macroeconomic Sizing"
                 ],
+                optionsTH: [
+                    "การแบ่งส่วนตามประชากรศาสตร์ (Demographic)",
+                    "การแบ่งส่วนตามภูมิศาสตร์ (Geographic)",
+                    "การแบ่งส่วนตามจิตวิทยาและพฤติกรรมศาสตร์ (Psychographic & Behavioral)",
+                    "การประเมินขนาดเศรษฐกิจมหาภาค (Macroeconomic)"
+                ],
+                correctIndex: 2,
+                conceptSummaryTH: "💡 **สรุปแนวคิด Behavioral & Psychographic Segmentation:** Behavioral คือการดูพฤติกรรมใช้งานจริง ความถี่ ส่วน Psychographic ดูที่ไลฟ์สไตล์ ความสนใจ และทัศนคติ",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** Demographic คือประชากรศาสตร์ เช่น อายุ เพศ รายได้ อาชีพ",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** Geographic คือทำเล พื้นที่ สภาพอากาศ",
                     "✓ **ข้อ C ถูกต้อง:** ความจริงจัง สไตล์ไลฟ์สไตล์ (Psychographic) และพฤติกรรมการใช้งานจริง (Behavioral) เป็นเกณฑ์ทางจิตวิทยาและพฤติกรรมศาสตร์",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** ไม่ใช่การแบ่งส่วนตลาด แต่เป็นการคำนวณขนาดเศรษฐกิจ"
-                ],
-                conceptSummaryTH: "💡 **สรุปแนวคิด Behavioral & Psychographic Segmentation:** Behavioral คือการดูพฤติกรรมใช้งานจริง ความถี่ ส่วน Psychographic ดูที่ไลฟ์สไตล์ ความสนใจ และทัศนคติ"
+                ]
             },
             {
                 id: 111,
@@ -980,13 +1023,20 @@
                     "12,600,000 THB",
                     "72,000,000 THB"
                 ],
+                optionsTH: [
+                    "25,200,000 บาท",
+                    "8,400,000 บาท",
+                    "12,600,000 บาท",
+                    "72,000,000 บาท"
+                ],
+                correctIndex: 0,
+                conceptSummaryTH: "💡 **สรุปสูตร Bottom-Up SOM:** SOM = [จำนวนยูนิต/สาขา] x [วันทำการต่อปี] x [กำลังผลิตต่อวัน] x [ราคาเฉลี่ยต่อออเดอร์]",
                 optionExplanationsTH: [
                     "✓ **ข้อ A ถูกต้อง:** สูตร SOM Bottom-Up = สาขา (3) x วันเปิด (350) x กำลังผลิต (120) x ราคา (200) = 25,200,000 บาท",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** 8,400,000 บาท เกิดจากการคำนวณเพียงแค่ 1 สาขา (ลืมคูณ 3 สาขา)",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** ตัวเลขนี้เกิดจากการลืมคูณจำนวนวันเปิด 350 วัน",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** เกิดจากการคูณตัวเลขผิดพลาด"
-                ],
-                conceptSummaryTH: "💡 **สรุปสูตร Bottom-Up SOM:** SOM = [จำนวนยูนิต/สาขา] x [วันทำการต่อปี] x [กำลังผลิตต่อวัน] x [ราคาเฉลี่ยต่อออเดอร์]"
+                ]
             },
             {
                 id: 112,
@@ -998,13 +1048,20 @@
                     "A = Customer Relationships | B = Revenue Streams",
                     "A = Channels | B = Key Activities"
                 ],
+                optionsTH: [
+                    "A = คุณค่าที่ส่งมอบ | B = ทรัพยากรหลัก",
+                    "A = กระแสรายได้ (Revenue Streams) | B = ช่องทาง (Channels)",
+                    "A = ความสัมพันธ์กับลูกค้า | B = กระแสรายได้",
+                    "A = ช่องทาง | B = กิจกรรมหลัก"
+                ],
+                correctIndex: 1,
+                conceptSummaryTH: "💡 **สรุป BMC (Revenue Streams & Channels):** Revenue Streams คือแหล่งที่มาของเงิน/รายได้ ส่วน Channels คือช่องทางที่ใช้ส่งมอบสินค้าไปถึงมือลูกค้า",
                 optionExplanationsTH: [
                     "⚠️ **ทำไมข้อ A ถึงผิด:** ค่าสมัครรายเดือนคือกระแสรายได้ ไม่ใช่ Value Proposition",
                     "✓ **ข้อ B ถูกต้อง:** A (ค่าบริการรายเดือน) = Revenue Streams และ B (แอปพลิเคชันทางเข้าถึงลูกค้า) = Channels",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** แอปไม่ใช่ Revenue Stream แต่เป็นช่องทาง Channels",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** เรียงลำดับสลับกัน"
-                ],
-                conceptSummaryTH: "💡 **สรุป BMC (Revenue Streams & Channels):** Revenue Streams คือแหล่งที่มาของเงิน/รายได้ ส่วน Channels คือช่องทางที่ใช้ส่งมอบสินค้าไปถึงมือลูกค้า"
+                ]
             },
             {
                 id: 113,
@@ -1016,13 +1073,20 @@
                     "Net Profit of 250,000 THB",
                     "Break-even (0 THB)"
                 ],
+                optionsTH: [
+                    "กำไรสุทธิ 50,000 บาท",
+                    "ขาดทุนสุทธิ 50,000 บาท",
+                    "กำไรสุทธิ 250,000 บาท",
+                    "เท่าทุน (0 บาท)"
+                ],
+                correctIndex: 0,
+                conceptSummaryTH: "💡 **สรุปสูตร Master Profit:** Profit = (Price x Q) - [(Variable Cost x Q) + Total Fixed Cost]",
                 optionExplanationsTH: [
                     "✓ **ข้อ A ถูกต้อง:** รายได้รวม = 800 x 500 = 400,000 | ต้นทุนรวม = (300 x 500) + 200,000 = 350,000 | กำไรสุทธิ = 400,000 - 350,000 = +50,000 บาท",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** คุณอาจลืมนำรายได้รวมมาลบกับต้นทุนรวม หรือคำนวณเครื่องหมายผิด",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** 250,000 บาทคือ Contribution Margin รวม (500 x 500) แต่ยังไม่ได้ลบต้นทุนคงที่ TFC 200,000 บาท",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** จุดคุ้มทุนจริงต้องขายได้ 400 ตัว แต่นี่ขายได้ 500 ตัวจึงมีกำไร"
-                ],
-                conceptSummaryTH: "💡 **สรุปสูตร Master Profit:** Profit = (Price x Q) - [(Variable Cost x Q) + Total Fixed Cost]"
+                ]
             },
             {
                 id: 114,
@@ -1034,13 +1098,20 @@
                     "150 desks",
                     "30 desks"
                 ],
+                optionsTH: [
+                    "50 โต๊ะ",
+                    "38 โต๊ะ",
+                    "150 โต๊ะ",
+                    "30 โต๊ะ"
+                ],
+                correctIndex: 0,
+                conceptSummaryTH: "💡 **สรุปสูตร BEP:** จุดคุ้มทุน (หน่วย) = ต้นทุนคงที่รวม TFC / (ราคาขาย P - ต้นทุนผันแปร VC)",
                 optionExplanationsTH: [
                     "✓ **ข้อ A ถูกต้อง:** Contribution Margin = 4,000 - 1,000 = 3,000 บาท/โต๊ะ | BEP = 150,000 / 3,000 = 50 โต๊ะ",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** เกิดจากการนำ 150,000 หารด้วยราคา 4,000 โดยไม่ได้ลบต้นทุนผันแปร 1,000 ออกก่อน",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** เกิดจากการนำ 150,000 หารด้วยต้นทุนผันแปร 1,000",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** ตัวเลขคำนวณสับสน"
-                ],
-                conceptSummaryTH: "💡 **สรุปสูตร BEP:** จุดคุ้มทุน (หน่วย) = ต้นทุนคงที่รวม TFC / (ราคาขาย P - ต้นทุนผันแปร VC)"
+                ]
             },
             {
                 id: 115,
@@ -1052,13 +1123,20 @@
                     "280% ROI",
                     "120% ROI"
                 ],
+                optionsTH: [
+                    "ผลตอบแทน 150% (150% ROI)",
+                    "ผลตอบแทน 180% (180% ROI)",
+                    "ผลตอบแทน 280% (280% ROI)",
+                    "ผลตอบแทน 120% (120% ROI)"
+                ],
+                correctIndex: 0,
+                conceptSummaryTH: "💡 **สรุปสูตร ROI:** ROI (%) = (กำไรสุทธิ Net Profit / เงินลงทุนรวม Total Investment) x 100%",
                 optionExplanationsTH: [
                     "✓ **ข้อ A ถูกต้อง:** กำไรสุทธิ = รายได้ (280,000) - ค่าขนส่ง (30,000) - เงินลงทุนเดิม (100,000) = 150,000 บาท | ROI = (150,000 / 100,000) x 100% = 150%",
                     "⚠️ **ทำไมข้อ B ถึงผิด:** เกิดจากการลืมนำเงินลงทุน 100,000 มาหักออกจากกำไรสุทธิ",
                     "⚠️ **ทำไมข้อ C ถึงผิด:** 280% คิดจากยอดขายรวม Revenue ไม่ใช่กำไรสุทธิ Net Profit",
                     "⚠️ **ทำไมข้อ D ถึงผิด:** การคำนวณตัวเลขคลาดเคลื่อน"
-                ],
-                conceptSummaryTH: "💡 **สรุปสูตร ROI:** ROI (%) = (กำไรสุทธิ Net Profit / เงินลงทุนรวม Total Investment) x 100%"
+                ]
             }
         ];
 
@@ -1084,7 +1162,6 @@
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
 
-            // Nav styling desktop
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('bg-white/10', 'text-white');
                 btn.classList.add('text-indigo-200');
@@ -1135,7 +1212,6 @@
         }
 
         function filterSummary(category) {
-            // Update button styles
             document.querySelectorAll('.summary-filter-btn').forEach(btn => {
                 btn.classList.remove('bg-indigo-600', 'text-white');
                 btn.classList.add('bg-slate-200', 'text-slate-700');
@@ -1162,11 +1238,9 @@
             document.getElementById('card-back-text-en').innerText = card.backEN;
             document.getElementById('card-back-text-th').innerText = card.backTH;
 
-            // Reset flip state
             isCardFlipped = false;
             document.getElementById('card-inner').classList.remove('is-flipped');
 
-            // Progress text
             document.getElementById('card-progress-text').innerText = `การ์ดใบที่ ${currentCardIndex + 1} / ${flashcardsData.length}`;
             const pct = ((currentCardIndex + 1) / flashcardsData.length) * 100;
             document.getElementById('card-progress-bar').style.width = `${pct}%`;
@@ -1219,7 +1293,7 @@
             renderFlashcard();
         }
 
-        // --- QUIZ LOGIC WITH ENHANCED INCORRECT ANSWER FEEDBACK ---
+        // --- QUIZ LOGIC WITH DEFENSIVE BILINGUAL RENDER ---
         function setQuizLangMode(mode) {
             quizLangMode = mode;
             document.querySelectorAll('.quiz-lang-btn').forEach(btn => {
@@ -1242,9 +1316,9 @@
                 const qBox = document.createElement('div');
                 qBox.className = "bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4";
                 
-                // Construct Choices HTML based on chosen Language Mode
+                // Construct Choices HTML safely with fallback
                 let optionsHTML = q.options.map((optEN, optIdx) => {
-                    const optTH = q.optionsTH[optIdx];
+                    const optTH = (q.optionsTH && q.optionsTH[optIdx]) ? q.optionsTH[optIdx] : optEN;
                     const letter = String.fromCharCode(65 + optIdx);
                     
                     let contentHTML = '';
@@ -1284,7 +1358,6 @@
                     `;
                 }).join('');
 
-                // Question Box Header based on Language Mode
                 let questionHeaderHTML = '';
                 if (quizLangMode === 'bilingual') {
                     questionHeaderHTML = `
@@ -1321,7 +1394,6 @@
                 `;
                 container.appendChild(qBox);
 
-                // Restore previous answers if existed
                 if (userQuizAnswers[q.id] !== undefined) {
                     restoreQuizSelection(q.id, userQuizAnswers[q.id]);
                 }
@@ -1342,7 +1414,6 @@
             const expBox = document.getElementById(`quiz-exp-${questionId}`);
             const statusTag = document.getElementById(`quiz-status-${questionId}`);
 
-            // Highlight choice borders
             const optionLabels = document.querySelectorAll(`.quiz-option-${questionId}`);
             optionLabels.forEach((label, idx) => {
                 label.classList.remove('border-emerald-500', 'bg-emerald-50/70', 'border-rose-400', 'bg-rose-50/70', 'border-indigo-400');
@@ -1357,7 +1428,7 @@
 
             const selectedLetter = String.fromCharCode(65 + selectedIdx);
             const correctLetter = String.fromCharCode(65 + q.correctIndex);
-            const selectedReason = q.optionExplanationsTH[selectedIdx];
+            const selectedReason = q.optionExplanationsTH ? q.optionExplanationsTH[selectedIdx] : "";
 
             if (isCorrect) {
                 if (statusTag) {
@@ -1437,7 +1508,6 @@
 
         // --- FINANCIAL CALCULATOR LOGIC ---
         function calculateBusinessMath() {
-            // Profit & BEP inputs
             const P = parseFloat(document.getElementById('calc-p').value) || 0;
             const VC = parseFloat(document.getElementById('calc-vc').value) || 0;
             const TFC = parseFloat(document.getElementById('calc-tfc').value) || 0;
@@ -1453,7 +1523,6 @@
             document.getElementById('out-tr').innerText = `${TR.toLocaleString()} บาท`;
             document.getElementById('out-profit').innerText = `${Profit.toLocaleString()} บาท`;
 
-            // ROI & SOM inputs
             const Inv = parseFloat(document.getElementById('calc-roi-inv').value) || 1;
             const NetProf = parseFloat(document.getElementById('calc-roi-profit').value) || 0;
             const ROI = ((NetProf / Inv) * 100).toFixed(1);
